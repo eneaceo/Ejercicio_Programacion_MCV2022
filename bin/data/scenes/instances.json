@@ -1,0 +1,51 @@
+[
+  {
+    "entity": {
+      "name": "Teapots",
+      "transform": {},
+      "render": [
+        {
+          "mesh": "data/meshes/Teapot001.mesh",
+          "mat": "data/textures/rustediron2/rustediron2.mat",
+          "mesh_group": 0
+        }
+      ],
+      "compute": [
+        {
+          "cs": "demo.compute",
+          "sizes" : [500, 1, 1],
+          "sets_num_instances" : true
+        }
+      ],
+      "num_instances": 5,
+      "buffers": {
+        "CtesCSDemo": {
+          "amplitude": 4.0,
+          "distance": 2.0,
+          "phase": 0
+        },
+        "world_instances": {
+          "num_elems": 500,
+          "data_type": "MAT44",
+          "initial_data": [
+            {
+              "pos": "2 0 -5"
+            },
+            {
+              "pos": "2 0 -2.5"
+            },
+            {
+              "pos": "2 0 0"
+            },
+            {
+              "pos": "2 0 2.5"
+            },
+            {
+              "pos": "2 0 5"
+            }
+          ]
+        }
+      }
+    }
+  }
+]

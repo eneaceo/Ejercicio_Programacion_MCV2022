@@ -1,0 +1,56 @@
+[
+  {
+    "entity": {
+      "name": "player",
+      "transform": {
+        "pos": "0 0 0"
+      },
+      "wasd_controller": {
+        "speed": 3.0,
+        "key_toggle_enable": 49
+      },
+      "collider": {
+        "controller": 1,
+        "radius": 0.5,
+        "height": 1,
+		    "density" : 0 
+      },
+      "ragdoll": {
+      },
+      "render": [
+        {
+          "mesh": "data/skeletons/mutant/mutant.mesh",
+          "mat": "data/skeletons/mutant/mutant.mat"
+        }
+      ],
+      "abs_aabb": {},
+      "tags": [ "player" ],
+      "armature": {
+        "src": "data/skeletons/mutant/mutant.skeleton"
+      },
+      "skel_lookat": {
+        "target_entity_name": "target_point"
+      },
+      "skel_ik": {
+        "bone_name" :  "Mutant:RightFoot"
+      }
+    }
+  },
+  {
+    "entity": {
+      "name": "target_point",
+      "transform": {
+        "pos": "5 0 5"
+      }
+    }
+  },
+  {
+    "entity": {
+      "name": "gamestats",
+      "gamestats" : {
+        "life" : 200,
+        "maxLife": 200
+      }
+    }
+  }
+]

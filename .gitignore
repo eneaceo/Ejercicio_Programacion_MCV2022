@@ -1,0 +1,7 @@
+objs/
+.vs/
+*.pdb
+*.ilk
+bin/imgui.ini
+bin/Engine.exe
+bin/data/cache

@@ -1,0 +1,22 @@
+[
+  {
+    "entity": {
+      "name": "Teapot",
+      "local_aabb": {},
+      "abs_aabb": {},
+      "lod": {
+        "replacement_prefab": "data/prefabs/sphere.json",
+        "threshold": 25
+      },
+      "transform": {
+      },
+      "render": [
+        {
+          "mesh": "data/meshes/Teapot001.mesh",
+          "mat": "data/textures/rustediron2/rustediron2.mat",
+          "mesh_group": 0
+        }
+      ]
+    }
+  }
+]

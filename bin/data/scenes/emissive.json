@@ -1,0 +1,22 @@
+[
+  {
+    "entity":
+    {
+      "name": "Ground Emissive",
+      "transform":
+      {
+        "pos": "0.1 0.0 0.05",
+        "scale": "1.4257 1.4257 1.4257",
+        "rot": "0.0 0.0 0.0 -1.0"
+      },
+      "render":
+      [
+        {
+          "mesh": "data/meshes/Ground.mesh",
+          "mat": "data/materials/emissive_logo.mat",
+          "mesh_group": 0
+        }
+      ]
+    }
+  }
+]

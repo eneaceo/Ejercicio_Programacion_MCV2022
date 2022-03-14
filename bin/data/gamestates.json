@@ -1,0 +1,8 @@
+{
+  "boot": "playing",
+  "gamestates": {
+    "splash_screen": [ "splash_screen" ],
+    "main_menu": [ "main_menu" ],
+    "playing": [ "boot", "john", "gameplay" ]
+  }
+}

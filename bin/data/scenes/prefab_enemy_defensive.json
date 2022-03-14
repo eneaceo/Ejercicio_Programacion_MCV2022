@@ -1,0 +1,33 @@
+[
+  {
+    "entity":
+    {
+      "name": "Enemigo defensive",
+      "transform" : {
+        "pos" : "10 0 10"
+      },
+      "bt_defensive" : {
+        "target_name" : "player",
+        "btmanager_name" : "bt_manager",
+        "life" : 100,
+        "speed" : 2.0,
+        "turn_speed" : 0.2
+      },
+      "render": [
+        {
+          "mesh": "data/skeletons/exo/exo_suit.mesh",
+          "mat": "data/skeletons/exo/suit.mat"
+        },
+
+        {
+          "mesh": "data/skeletons/exo/exo_body.mesh",
+          "mat": "data/skeletons/exo/body.mat"
+        }
+      ],
+      "abs_aabb": {},
+      "armature": {
+        "src": "data/skeletons/exo/exo.skeleton"
+      }
+    }
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "name": "exo",
+  "anims": [
+    { "name": "idle" },
+    { "name": "smash" },
+    { "name": "dying" }
+  ],
+  "meshes": [
+    "exo_suit",
+    "exo_body"
+  ],
+  "bone_ids_to_debug": [],
+  "lookat_corrections": []
+}

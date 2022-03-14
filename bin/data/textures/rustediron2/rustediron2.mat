@@ -1,0 +1,6 @@
+{
+  "albedo": "data/textures/rustediron2/rustediron2_basecolor.dds",
+  "normal": "data/textures/rustediron2/rustediron2_normal.dds",
+  "roughness": "data/textures/rustediron2/rustediron2_roughness.dds",
+  "metallic": "data/textures/rustediron2/rustediron2_metallic.dds"
+}

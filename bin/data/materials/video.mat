@@ -1,0 +1,5 @@
+{
+  "albedo": "data/textures/black.dds",
+  "normal": "data/textures/null_normal.dds",
+  "pipeline": "video.pipeline"
+}

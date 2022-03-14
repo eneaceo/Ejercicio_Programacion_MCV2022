@@ -1,0 +1,17 @@
+[
+  {
+    "entity": {
+      "name": "decal",
+      "transform": {
+        "pos": "0 0 0"
+      },
+      "abs_aabb": {},
+      "render": [
+        {
+          "mesh": "data/meshes/cube_1m.mesh",
+          "mat": "data/materials/blood.mat"
+        }
+      ]
+    }
+  }
+]

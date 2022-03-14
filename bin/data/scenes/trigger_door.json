@@ -1,0 +1,18 @@
+[
+  {
+    "entity": {
+      "name": "trigger_door",
+      "transform": {
+        "pos": "5 0 5"
+      },
+	  "collider" : {
+  		"shape" : "sphere",
+  		"radius" : 1,
+  		"xtrigger" : true
+      },
+      "john_life" :{
+        "life" : 50
+      }
+    }
+  }
+]

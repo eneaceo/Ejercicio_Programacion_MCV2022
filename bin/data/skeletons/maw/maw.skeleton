@@ -1,0 +1,12 @@
+{
+  "name": "maw",
+  "anims": [
+    { "name": "idle" },
+    { "name": "maw_hi" },
+    { "name": "maw_walk" },
+    { "name": "maw_attack" }
+  ],
+  "meshes": [
+    "maw"
+  ]
+}

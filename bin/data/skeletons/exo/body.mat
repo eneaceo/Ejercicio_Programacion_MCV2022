@@ -1,0 +1,5 @@
+{
+  "albedo": "data/skeletons/exo/BODY_diffuse.dds",
+  "normal": "data/skeletons/exo/BODY_normal.dds",
+  "uses_skin" : true
+}

@@ -1,0 +1,23 @@
+{
+  "demo": {
+    "cs_fx": "data/shaders/compute_basic.fx",
+    "cs_fn": "cs_demo"
+  },
+  "cs_cull_instances": {
+    "cs_fx": "data/shaders/gpu_culling.fx",
+    "cs_fn": "cs_cull_instances"
+  },
+  "cs_simulation": {
+    "cs_fx": "data/shaders/gpu_simulation.fx",
+    "cs_fn": "cs_simulation",
+    "desc": "Sample basic simulation on a 2D texture"
+  },
+  "cs_particles_fountain_spawn": {
+    "cs_fx": "data/shaders/compute_particles_fountain.fx",
+    "cs_fn": "cs_particles_spawn"
+  },
+  "cs_particles_fountain_update": {
+    "cs_fx": "data/shaders/compute_particles_fountain.fx",
+    "cs_fn": "cs_particles_update"
+  }
+}

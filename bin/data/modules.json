@@ -1,0 +1,20 @@
+{
+  "update": [
+    "input_1",
+    "entities",
+    "physics",
+    "camera_mixer",
+    "ui",
+    "splash_screen",
+    "main_menu",
+    "gameplay",
+    "john"
+  ],
+  "render": [
+    "render",
+    "ui",
+    "john",
+    "entities",
+    "input_1"
+  ]
+}

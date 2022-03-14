@@ -1,0 +1,62 @@
+[
+    {
+        "name" : "move",
+        "buttons" : ["pad_lanalog_x", "pad_lanalog_y"],
+        "operation" : "vector"
+    },
+    {
+        "name" : "jump",
+        "buttons" : ["pad_a", "space"],
+        "operation" : "all"
+    },
+    {
+        "name" : "light_punch",
+        "buttons" : ["pad_a", "a"],
+        "operation" : "any"
+    },
+    {
+        "name" : "medium_punch",
+        "buttons" : ["pad_b", "b"],
+        "operation" : "any"
+    },
+    {
+        "name" : "push",
+        "buttons" : ["-pad_lanalog_y", "pad_r2"],
+        "operation" : "any"
+    },
+    {
+        "name" : "grab",
+        "buttons" : ["light_punch", "medium_punch"],
+        "operation" : "all"
+    },
+    {
+        "name" : "camera_A",
+        "buttons" : ["1"],
+        "operation" : "all"
+    },
+    {
+        "name" : "camera_B",
+        "buttons" : ["2"],
+        "operation" : "all"
+    },
+    {
+        "name" : "camera_C",
+        "buttons" : ["3"],
+        "operation" : "all"
+    },
+    {
+        "name" : "menu_down",
+        "buttons" : ["pad_down", "down", "s"],
+        "operation" : "any"
+    },
+    {
+        "name" : "menu_up",
+        "buttons" : ["pad_up", "up", "w"],
+        "operation" : "any"
+    },
+    {
+        "name" : "menu_confirm",
+        "buttons" : ["space"],
+        "operation" : "any"
+    }
+]

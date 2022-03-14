@@ -1,0 +1,5 @@
+{
+  "albedo": "data/textures/wood/Wooden_planks_02_1K_Base_Color.dds",
+  "normal": "data/textures/wood/Wooden_planks_02_1K_Normal.dds",
+  "roughness": "data/textures/wood/Wooden_planks_02_1K_Roughness.dds"
+}

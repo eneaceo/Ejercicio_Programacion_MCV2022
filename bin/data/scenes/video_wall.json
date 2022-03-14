@@ -1,0 +1,25 @@
+[
+  {
+    "entity": {
+      "name": "VideoWall",
+      "local_aabb": {},
+      "abs_aabb": {},
+      "transform": {
+        "pos": "0 5 0.1",
+        "scale": "1.0 1.0 1.0",
+        "rot": "0.0 0.0 0.0 -1.0"
+      },
+      "render": [
+        {
+          "mesh": "data/meshes/Wall01.mesh",
+          "mat": "data/materials/video.mat",
+          "mesh_group": 0
+        }
+      ],
+      "video_player": {
+        "src": "data/videos/demo.mp4",
+        "auto_loops": true
+      }
+    }
+  }
+]

@@ -1,0 +1,50 @@
+{
+
+  "compute": {
+    "cs": "cs_cull_instances.compute",
+    "sizes": [ 1, 1, 1 ]
+  },
+
+  "buffers": {
+    "objs": {
+      "bytes_per_elem": 96,
+      "num_elems": 16384,
+      "desc": "Hold each obj candidate to be culled and rendered"
+    },
+    "visible_objs": {
+      "bytes_per_elem": 64,
+      "num_elems": 16384,
+      "desc": "Hold each obj which has been culled"
+    },
+    "prefabs": {
+      "bytes_per_elem": 48,
+      "num_elems": 64,
+      "desc": "Array of Prefabs. Each prefabs defines which draw calls must be rendered"
+    },
+    "draw_datas": {
+      "bytes_per_elem": 32,
+      "num_elems": 64,
+      "is_indirect": true,
+      "desc": "Holds how many objs of each type have passes the culling test"
+    },
+    "TCtes": {
+      "desc": "Notify the CS how many instances must handle"
+    },
+    "TCullingPlanes": {
+      "desc": "Planes to perform the culling test"
+    }
+  },
+
+  "xgenerate_sample_data": {
+    "desc": "Parameters to generate fake data",
+    "radius": 100.0,
+    "num_instances": 4096,
+    "prefabs": [
+      "data/prefabs/teapot.json"
+    ]
+  },
+
+  "show_debug": false,
+  "xcamera": "light_dir",
+  "camera": "camera"
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "entity":
+    {
+      "name": "Simulation",
+      "transform": {
+      },
+      "compute": [
+        {
+          "cs": "cs_simulation.compute",
+          "sizes": [ 64, 64, 1 ]
+        },
+        {
+          "swap_texture_a": "outTexture",
+          "swap_texture_b": "inTexture"
+        }
+      ],
+      "buffers": {
+        "inTexture": {
+          "create_texture": {
+            "xres": 64,
+            "yres": 64,
+            "format": "R16_FLOAT"
+          }
+        },
+        "outTexture": {
+          "create_texture": {
+            "xres": 64,
+            "yres": 64,
+            "format": "R16_FLOAT"
+          }
+        }
+      }
+      }
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "default_num_instances" :  128
+  "auto_instancing": {
+    "data/meshes/Box003.mesh" : 1024
+  }
+}

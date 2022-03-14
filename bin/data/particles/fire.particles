@@ -1,0 +1,33 @@
+{
+  "max_particles" : 100,
+  "num_particles" : 1,
+  "interval" : 0.2,
+
+  "type" : "point",
+  "radius" : 0.0,
+  "follow_owner" : false,
+  
+  "lifetime" : 2.0,
+  "lifetime_variation" : 0.3,
+  "velocity" : "0 0 0",
+  "gravity_factor" : -0.05,
+
+  "texture" : "data/textures/particles/glow.dds",
+  "opacity" : [
+    [0.0, 1.0],
+    [0.75, 0.7],
+    [1.0, 0.0]
+  ],
+  "color" : [
+    [0.0, "1 0 0"],
+    [0.75, "1 1 0"],
+    [1.0, "1 1 0"]
+  ],
+  "size" : [
+    [0.0, 0.0],
+    [0.25, 1],
+    [0.75, 0.5],
+    [1.0, 0.0]
+  ],
+  "additive" : true
+}

@@ -1,0 +1,23 @@
+{
+	"instanced_mesh" : "data/meshes/Teapot001.mesh",
+	"num_elems" : 5,
+	"bytes_per_elem" : 64,
+	"name" : "Teapots Instances",
+	"instances" : [
+		{
+			"pos": "2 0 -5"
+		},
+		{
+			"pos": "2 0 -2.5"
+		},
+		{
+			"pos": "2 0 0"
+		},
+		{
+			"pos": "2 0 2.5"
+		},
+		{
+			"pos": "2 0 5"
+		}
+	]
+}

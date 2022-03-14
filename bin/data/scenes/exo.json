@@ -1,0 +1,25 @@
+[
+  {
+    "entity": {
+      "name": "exo",
+      "transform": {
+        "pos": "4 0 0"
+      },
+      "render": [
+        {
+          "mesh": "data/skeletons/exo/exo_suit.mesh",
+          "mat": "data/skeletons/exo/suit.mat"
+        },
+
+        {
+          "mesh": "data/skeletons/exo/exo_body.mesh",
+          "mat": "data/skeletons/exo/body.mat"
+        }
+      ],
+      "abs_aabb": {},
+      "armature": {
+        "src": "data/skeletons/exo/exo.skeleton"
+      }
+    }
+  }
+]

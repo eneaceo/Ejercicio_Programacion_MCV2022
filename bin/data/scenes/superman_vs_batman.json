@@ -1,0 +1,50 @@
+[
+  {
+    "entity": {
+      "name": "GeoSphere001",
+      "transform": {
+        "pos": "0.0 0.0 0.0",
+        "scale": "1.0 1.0 1.0",
+        "rot": "0.0 0.0 0.0 -1.0"
+      },
+      "render": [
+        {
+          "mesh": "data/meshes/GeoSphere001.mesh",
+          "mat": "data/materials/Superman.mat",
+          "mesh_group": 0
+        },
+        {
+          "mesh": "data/meshes/GeoSphere001.mesh",
+          "mat": "data/materials/Batman.mat",
+          "mesh_group": 1
+        },
+        {
+          "mesh": "data/meshes/GeoSphere001.mesh",
+          "mat": "data/materials/missing.mat",
+          "mesh_group": 2
+        }
+      ],
+      "abs_aabb": {},
+      "local_aabb": {}
+    }
+  },
+  {
+    "entity": {
+      "name": "Box001",
+      "transform": {
+        "pos": "-1.0 0.0 0.5",
+        "scale": "1.0 1.0 1.0",
+        "rot": "0.0 0.0 0.0 -1.0"
+      },
+      "abs_aabb": { },
+      "local_aabb": {},
+      "render": [
+        {
+          "mesh": "data/meshes/Box001.mesh",
+          "mat": "data/materials/Superman.mat",
+          "mesh_group": 0
+        }
+      ]
+    }
+  }
+]

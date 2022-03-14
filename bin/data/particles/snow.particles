@@ -1,0 +1,28 @@
+{
+  "max_particles" : 1000,
+  "num_particles" : 5,
+  "interval" : 0.05,
+
+  "type" : "circle_perimeter",
+  "type_radius" : 3,
+  "follow_owner" : false,
+  
+  "lifetime" : 7.0,
+  "explode" : true,
+  "velocity" : "1 0 0",
+  "gravity_factor" : 0.0,
+
+  "texture" : "data/textures/particles/glow.dds",
+  "opacity" : [
+    [0.0, 1.0]
+  ],
+  "color" : [
+    [0.0, "1 1 1"]
+  ],
+  "size" : [
+    [0.0, 0.2],
+    [0.9, 0.2],
+    [1.0, 0.0]
+  ],
+  "additive" : false
+}

@@ -1,0 +1,55 @@
+{
+  "sizes": {
+    "default": 1024,
+    "transform": 2048,
+    "entity": 2048
+  },
+  "init_order": {
+    "entity": 100,
+    "transform": 90
+  },
+  "multithread": [
+    "armature"
+  ],
+  "update": [
+    "auto_destroy",
+    "aim_to",
+    "bt_manager",
+    "bt_agresive",
+    "bt_defensive",
+    "bt_distance",
+    "compute",
+    "video_player",
+    "armature",
+    "ragdoll",
+    "wasd_controller",
+    "curve_controller",
+    "3rdperson_controller",
+    "platform_controller",
+    "bullet_controller",
+    "gamestats",
+    "hierarchy",
+    "attached_to_bone",
+    "animator_controller",
+    "updates_physics",
+    "local_aabb",
+    "culling",
+    "light_spot",
+    "camera",
+    "fsm",
+    "particles"
+  ],
+  "render_debug": [
+    "transform",
+    "name", 
+    "collider"
+  ],
+  "others_update": [
+    "curve_controller",
+    "light_spot",
+    "collider",
+    "local_aabb",
+    "abs_aabb",
+    "3rd_camera_controller"
+  ]
+}

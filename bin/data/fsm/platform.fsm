@@ -1,0 +1,20 @@
+{
+    "initial_state" : "idle_down",
+    "states" : [
+        { "name" : "idle_down" },
+        { "name" : "move_up", "type" : "move", "offset" : "0 5 0", "duration" : 3.0 },
+        { "name" : "idle_up", "type" : "shake", "amount" : 0.1 },
+        { "name" : "move_down", "type" : "move", "offset" : "0 -5 0", "duration" : 3.0 },
+        { "name" : "cooldown" }
+    ],
+    "transitions" : [
+        { "source" : "idle_down", "target" : "move_up", "type" : "check_variable", "condition" : "enabled == true" },
+        { "source" : "move_up", "target" : "idle_up", "type" : "wait_state_finished" },
+        { "source" : "idle_up", "target" : "move_down", "type" : "wait_time", "time" : 2.0 },
+        { "source" : "move_down", "target" : "cooldown", "type" : "wait_state_finished" },
+        { "source" : "cooldown", "target" : "idle_down", "type" : "wait_time", "time" : 2.0 }
+    ],
+    "variables" : [
+        { "name" : "enabled", "type" : "bool", "default_value" : false }
+    ]
+}

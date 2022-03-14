@@ -1,0 +1,101 @@
+[
+  {
+  "entity": {
+    "name" : "Ground",
+    "abs_aabb": {},
+    "transform": {
+      "pos": "0.1 0.0 0.05",
+      "scale": "3 3 3",
+      "rot": "0.0 0.0 0.0 -1.0"
+    },
+    "render": [
+      {
+        "mesh": "data/meshes/Ground.mesh",
+        "mat": "data/textures/rustediron2/rustediron2.mat",
+        "mesh_group": 0
+      }
+    ],
+    "collider": {
+      "shape": "plane",
+  "normal" : "0 1 0",
+  "distance" : 0
+    }
+  }
+  },
+  {
+    "entity": {
+      "name" : "cil1",
+      "abs_aabb": {},
+      "local_aabb": {},
+      "transform": {
+        "pos": "-5 0.0 -5",
+        "scale": "1.0 1.0 1.0",
+        "rot": "0.0 0.0 0.0 -1.0"
+      },
+      "render": [
+        {
+          "mesh": "data/meshes/Cylinder001.mesh",
+          "mat": "data/textures/rustediron2/rustediron2.mat",
+          "mesh_group": 0
+        }
+      ]
+    }
+  },
+  {
+    "entity": {
+      "name" : "cil2",
+      "abs_aabb": {},
+      "local_aabb": {},
+      "transform": {
+        "pos": "-5 0.0 5",
+        "scale": "1.0 1.0 1.0",
+        "rot": "0.0 0.0 0.0 -1.0"
+      },
+      "render": [
+        {
+          "mesh": "data/meshes/Cylinder001.mesh",
+          "mat": "data/textures/rustediron2/rustediron2.mat",
+          "mesh_group": 0
+        }
+      ]
+    }
+  },
+  {
+    "entity": {
+      "name" : "cil3",
+      "abs_aabb": {},
+      "local_aabb": {},
+      "transform": {
+        "pos": "5 0.0 5",
+        "scale": "1.0 1.0 1.0",
+        "rot": "0.0 0.0 0.0 -1.0"
+      },
+      "render": [
+        {
+          "mesh": "data/meshes/Cylinder001.mesh",
+          "mat": "data/textures/rustediron2/rustediron2.mat",
+          "mesh_group": 0
+        }
+      ]
+    }
+  },
+  {
+    "entity": {
+      "name" : "cil4",
+      "abs_aabb": {},
+      "local_aabb": {},
+      "transform": {
+        "pos": "5 0.0 -5",
+        "scale": "1.0 1.0 1.0",
+        "rot": "0.0 0.0 0.0 -1.0"
+      },
+      "render": [
+        {
+          "mesh": "data/meshes/Cylinder001.mesh",
+          "mat": "data/textures/rustediron2/rustediron2.mat",
+          "mesh_group": 0
+        }
+      ]
+    }
+  }
+]

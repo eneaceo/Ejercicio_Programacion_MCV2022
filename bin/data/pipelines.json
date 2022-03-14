@@ -1,0 +1,185 @@
+{
+  "debug": {
+    "vs_filename": "data/shaders/solid.fx",
+    "vertex_decl": "PosColor"
+  },
+  "debug_white": {
+    "vs_filename": "data/shaders/solid.fx",
+    "vertex_decl": "Pos",
+    "vs_entry": "VS_NoColor",
+    "rs": "wireframe"
+  },
+  "objs": {
+    "vs_filename": "data/shaders/objs.fx",
+    "vertex_decl": "PosNUvTan",
+    "add_skin_support": true
+  },
+  "pbr_gbuffer": {
+    "vs_filename": "data/shaders/pbr.fx",
+    "vertex_decl": "PosNUvTan",
+    "add_skin_support": true,
+    "add_instanced_support": true,
+    "gpu_buffers": {
+      "world_instances": 0
+    }
+  },
+  "shadows": {
+    "vs_filename": "data/shaders/shadows.fx",
+    "ps_entry": null,
+    "vertex_decl": "Pos",
+    "rs": "shadows",
+    "add_skin_support": true,
+    "add_instanced_support": true,
+    "gpu_buffers": {
+      "world_instances": 0
+    }
+  },
+  "pbr_ambient": {
+    "vs_filename": "data/shaders/pbr_ambient.fx",
+    "vs_entry": "VS_FullScreen",
+    "vertex_decl": "PosUv",
+    "z": "disable_all",
+    "env": "data/textures/cubemaps/env.dds",
+    "irradiance": "data/textures/cubemaps/irradiance.dds"
+  },
+  "pbr_light_point": {
+    "vs_filename": "data/shaders/pbr_lights.fx",
+    "ps_entry": "PS_Light_Point",
+    "vertex_decl": "Pos",
+    "z": "inverse_test_no_write",
+    "rs": "reverse_culling",
+    "blend": "additive"
+  },
+  "pbr_light_spot": {
+    "vs_filename": "data/shaders/pbr_lights.fx",
+    "ps_entry": "PS_Light_Spot",
+    "vertex_decl": "Pos",
+    "z": "inverse_test_no_write",
+    "rs_not_required_because_the_mesh_is_already_inverted": "reverse_culling",
+    "blend": "additive"
+  },
+  "pbr_light_spot_shadows": {
+    "vs_filename": "data/shaders/pbr_lights.fx",
+    "ps_entry": "PS_Light_Spot_Shadows",
+    "vertex_decl": "Pos",
+    "z": "inverse_test_no_write",
+    "rs_not_required_because_the_mesh_is_already_inverted": "reverse_culling",
+    "blend": "additive"
+  },
+  "pbr_skybox": {
+    "vs_filename": "data/shaders/pbr_skybox.fx",
+    "vs_entry": "VS_FullScreen",
+    "z": "test_equal",
+    "vertex_decl": "PosUv"
+  },
+  "deferred_resolve": {
+    "vs_filename": "data/shaders/deferred_resolve.fx",
+    "vs_entry": "VS_FullScreen",
+    "vertex_decl": "PosUv",
+    "z": "disable_all"
+  },
+  "presentation": {
+    "vs_filename": "data/shaders/presentation.fx",
+    "vs_entry": "VS_FullScreen",
+    "vertex_decl": "PosUv",
+    "z": "disable_all"
+  },
+  "water": {
+    "vs_filename": "data/shaders/water.fx",
+    "vertex_decl": "PosNUvTan",
+    "noise": "data/textures/noise.dds"
+  },
+  "ui_combinative": {
+    "vs_filename": "data/shaders/ui.fx",
+    "vertex_decl": "PosUv",
+    "rs": "cull_none",
+    "z": "disable_all",
+    "blend": "combinative"
+  },
+  "ui_additive": {
+    "vs_filename": "data/shaders/ui.fx",
+    "vertex_decl": "PosUv",
+    "rs": "cull_none",
+    "z": "disable_all",
+    "blend": "additive"
+  },
+  "particle_combinative": {
+    "vs_filename": "data/shaders/particle.fx",
+    "vertex_decl": "PosUv",
+    "rs": "cull_none",
+    "z": "test_but_no_write",
+    "blend": "combinative"
+  },
+  "particle_additive": {
+    "vs_filename": "data/shaders/particle.fx",
+    "vertex_decl": "PosUv",
+    "rs": "cull_none",
+    "z": "test_but_no_write",
+    "blend": "additive_by_src_alpha"
+  },
+
+  "compute_particles_billboards": {
+    "vs_filename": "data/shaders/compute_particles_billboards.fx",
+    "vertex_decl": "PosUv",
+    "blend": "additive_by_src_alpha",
+    "rs": "cull_none",
+    "z": "test_but_no_write",
+    "gpu_buffers": {
+      "instances": 0
+    },
+    "add_instanced_support": true
+  },
+
+  "emissive": {
+    "vs_filename": "data/shaders/emissive.fx",
+    "vertex_decl": "PosNUvTan",
+    "z": "test_equal",
+    "blend": "additive_by_src_alpha"
+  },
+  "blur": {
+    "vs_filename": "data/shaders/blur.fx",
+    "vertex_decl": "Pos",
+    "rs": "cull_none",
+    "z": "disable_all"
+  },
+  "focus": {
+    "vs_filename": "data/shaders/focus.fx",
+    "vertex_decl": "Pos",
+    "rs": "cull_none",
+    "z": "disable_all"
+  },
+  "edge_detector": {
+    "vs_filename": "data/shaders/edge_detector.fx",
+    "vertex_decl": "Pos",
+    "rs": "cull_none",
+    "z": "disable_all"
+  },
+  "bloom_filter": {
+    "vs_filename": "data/shaders/bloom.fx",
+    "ps_entry": "PS_Filter",
+    "vertex_decl": "Pos",
+    "rs": "cull_none",
+    "z": "disable_all"
+  },
+  "bloom_add": {
+    "vs_filename": "data/shaders/bloom.fx",
+    "ps_entry": "PS_Add",
+    "vertex_decl": "Pos",
+    "rs": "cull_none",
+    "z": "disable_all",
+    "blend": "additive"
+  },
+  "decals": {
+    "vs_filename": "data/shaders/decals.fx",
+    "vertex_decl": "Pos",
+    "z": "inverse_test_no_write",
+    "rs": "reverse_culling",
+    "blend": "combinative"
+  },
+  "video": {
+    "vs_filename": "data/shaders/pbr.fx",
+    "ps_entry": "PS_Video",
+    "vertex_decl": "PosNUvTan"
+  }
+
+}

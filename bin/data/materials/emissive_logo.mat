@@ -1,0 +1,6 @@
+{
+  "emissive": "data/textures/logo_glow.dds",
+  "pipeline": "emissive.pipeline",
+  "casts_shadows": false,
+  "render_channel": "emissive"
+}

@@ -1,0 +1,5 @@
+{
+  "pipeline": "shadows.pipeline",
+  "casts_shadows": false,
+  "render_channel" : "shadows"
+}

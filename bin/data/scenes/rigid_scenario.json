@@ -1,0 +1,37 @@
+[
+  {
+    "entity": {
+      "name": "ground",
+      "transform": {
+        "pos": "0 0 0",
+        "scale": "1.0 1.0 1.0"
+      },
+      "collider": {
+        "shape": "trimesh",
+        "collision_mesh": "data/collision_meshes/demo.cmesh"
+      }
+    }
+  },
+  {
+    "entity": {
+      "name": "ball",
+      "transform": {
+        "pos": "2 4 1"
+      },
+      "collider": {
+        "shape": "convex",
+        "collision_mesh": "data/collision_meshes/convex.cmesh",
+        "radius": 1,
+        "dynamic": true,
+        "group": "wall",
+        "mask": "all"
+      },
+      "render": [
+        {
+          "mesh": "data/meshes/convex.mesh",
+          "mat": "data/materials/rocks.mat"
+        }
+      ]
+    }
+  }
+]

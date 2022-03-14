@@ -1,0 +1,48 @@
+[
+  {
+    "entity": {
+      "name": "camera",
+      "transform": {
+        "pos": "10 14 8",
+        "lookat": "0 0 0"
+      },
+      "camera": {
+      },
+      "xflyover_controller": {
+        "speed_factor": 11.0,
+        "rotation_sensibility": 20,
+        "key_toggle_enable": 49
+      },
+      "3rdperson_controller": {
+        "target": "player",
+		    "target_offset" : "0 3 0"
+      },
+      "tags": [ "camera" ],
+      "render_ao": {
+        "enabled": true
+      },
+      "color_grading": {
+        "enabled": false,
+        "lut": "data/textures/lut/lut2.dds"
+      },
+      "blur": {
+        "enabled": false,
+        "max_steps": 2
+      },
+      "focus": {
+        "enabled": false
+      },
+      "bloom": {
+        "enabled": false,
+        "rt_name": "bloom",
+        "preset1": 1,
+        "max_steps": 4,
+        "multiplier": 2.5
+      },
+      "edge_detector": {
+        "enabled": false
+      },
+      "culling" : true
+    }
+  }
+]

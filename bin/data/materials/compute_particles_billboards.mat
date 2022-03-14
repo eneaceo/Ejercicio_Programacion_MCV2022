@@ -1,0 +1,6 @@
+{
+  "pipeline": "compute_particles_billboards.pipeline",
+  "render_channel": "transparent",
+  "albedo": "data/textures/light_mask.dds",
+  "casts_shadows": false
+}

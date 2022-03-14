@@ -1,0 +1,5 @@
+{
+  "pipeline": "water.pipeline",
+  "casts_shadows": false,
+  "render_channel" : "distorsion"
+}

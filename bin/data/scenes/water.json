@@ -1,0 +1,22 @@
+[
+  {
+    "entity":
+    {
+      "name": "Water",
+      "transform":
+      {
+        "pos": "0 1 0 ",
+        "rot": "0.0 0.0 0.0 1.0",
+        "scale" : "10 1 10"
+      },
+      "render":
+      [
+        {
+          "mesh": "data/meshes/PlaneXZ1M.mesh",
+          "mat": "data/materials/water.mat",
+          "mesh_group": 0
+        }
+      ]
+    }
+  }
+]

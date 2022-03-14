@@ -1,0 +1,21 @@
+[
+  {
+    "entity": {
+      "name": "Sphere",
+      "local_aabb": {},
+      "abs_aabb": {},
+      "lod": {
+        "threshold": 50
+      },
+      "transform": {
+      },
+      "render": [
+        {
+          "mesh": "data/meshes/Sphere001.mesh",
+          "mat": "data/textures/rustediron2/rustediron2.mat",
+          "mesh_group": 0
+        }
+      ]
+    }
+  }
+]

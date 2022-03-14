@@ -1,0 +1,56 @@
+[
+  {
+    "entity": {
+      "name": "light_dir",
+      "transform": {
+        "pos": "3 3 -5",
+        "lookat": "0 0 0"
+      },
+      "culling": true,
+      "light_spot": {
+        "color": "1 1 1 1",
+        "z_min": 2.2,
+        "z_max": 50.0,
+        "pattern": "data/textures/lantern.dds",
+        "casts_shadows": true,
+        "shadows_fmt": "R16_TYPELESS",
+        "shadows_resolution": 512,
+        "shadows_step": 3.35,
+        "intensity" :  20
+      },
+      "xflyover_controller": {
+        "speed_factor": 11.0,
+        "rotation_sensibility": 20,
+        "enabled" : false,
+        "key_toggle_enable" : 49
+      }
+    }
+  },
+  {
+    "entity": {
+      "name": "light_red",
+      "transform": {
+        "pos": "2 1 3"
+      },
+      "light_point": {
+        "color": "1 0 0 1",
+        "radius": 2,
+        "intensity": 15,
+        "enabled" : true
+      }
+    }
+  },
+  {
+    "entity": {
+      "name": "light_blue",
+      "transform": {
+        "pos": "-2 1 3"
+      },
+      "light_point": {
+        "color": "0 0 1 1",
+        "radius": 4,
+        "intensity": 15
+      }
+    }
+  }
+]

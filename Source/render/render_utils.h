@@ -1,0 +1,68 @@
+#pragma once
+
+DXGI_FORMAT readFormat(const json& j, const std::string& label);
+
+// ---------------------------------------
+enum eSamplerType {
+  // Order should match the sampler definition values in data/shaders/common.h
+  SAMPLER_WRAP_LINEAR = 0,
+  SAMPLER_BORDER_LINEAR,
+  SAMPLER_BORDER_PCF,
+  SAMPLER_CLAMP_LINEAR,
+
+  // ..
+  SAMPLERS_COUNT
+};
+void activateSampler(int slot, eSamplerType cfg);
+
+// ---------------------------------------
+enum class ZConfig {
+    DEFAULT
+  , DISABLE_ALL
+  , TEST_BUT_NO_WRITE
+  , TEST_EQUAL
+  , INVERSE_TEST_NO_WRITE
+  , TEST_NO_WRITES_MARK_STENCIL
+  , ON_NON_ZERO_STENCIL
+  , COUNT
+};
+void activateZConfig(ZConfig cfg, uint32_t stencil_ref = 255);
+
+// ---------------------------------------
+enum class RSConfig {
+  DEFAULT
+  , REVERSE_CULLING
+  , CULL_NONE
+  , SHADOWS
+  , WIREFRAME
+  , COUNT
+};
+void activateRSConfig(RSConfig cfg);
+
+// ---------------------------------------
+enum class BlendConfig {
+  DEFAULT
+, ADDITIVE
+, ADDITIVE_BY_SRC_ALPHA
+, COMBINATIVE
+, COMBINATIVE_GBUFFER
+, COUNT
+};
+void activateBlendConfig(BlendConfig cfg);
+
+// ---------------------------------------
+// Read from name
+ZConfig ZConfigFromString(const std::string& aname);
+RSConfig RSConfigFromString(const std::string& aname);
+BlendConfig BlendConfigFromString(const std::string& aname);
+
+// ---------------------------------------
+// Edit in ImGui
+bool renderInMenu(ZConfig& cfg);
+bool renderInMenu(RSConfig& cfg);
+bool renderInMenu(BlendConfig& cfg);
+
+// ---------------------------------------
+bool createRenderUtils();
+void destroyRenderUtils();
+void activateDefaultRenderState();

@@ -1,0 +1,31 @@
+{
+  "scenes_to_load": [
+    "data/scenes/camera.json",
+    "data/scenes/player.json",
+    "data/scenes/helpers.json",
+    "data/scenes/lights.json",
+    "data/scenes/btdebug.json",
+    "data/scenes/luamanager.json",
+    "data/scenes/my_scene_enemies.json",
+    "data/scenes/my_scene_arena.json",
+    "data/scenes/potion.json"
+  ],
+  "scenes_to_not_load": [
+    "data/scenes/test_fsm.json",
+    "data/scenes/instances.json",
+    "data/scenes/compute_particles.json",
+    "data/scenes/emissive.json",
+    "data/scenes/test_particles.json",
+    "data/scenes/simulation.json",
+    "data/scenes/decals.json",
+    "data/scenes/camera.json",
+    "data/scenes/player.json",
+    "data/scenes/water.json",
+    "data/scenes/rigid_scenario.json",
+    "data/scenes/helpers.json",
+    "data/scenes/rigid_scenario.json",
+    "data/scenes/bullets.json",
+    "data/scenes/video_wall.json",
+    "data/scenes/mcv_scene01.json"
+  ]
+}

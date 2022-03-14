@@ -1,0 +1,30 @@
+[
+  {
+    "entity": {
+      "name": "bullet",
+      "transform": {
+        "pos": "0 0 0",
+        "scale": 0.1 
+      },
+      "render": [
+        {
+          "mesh": "data/meshes/Teapot001.mesh",
+          "mat": "data/materials/rocks.mat"
+        }
+      ],
+      "auto_destroy": {
+        "time": 10.0
+      },
+      "bullet_controller": {
+        "speed": 12,
+        "gamestats_name" : "gamestats"
+      },
+	  "collider" : {
+	  	"shape" : "sphere",
+		  "radius" : 0.5,
+		  "kinematic" : true,
+		  "trigger" : true
+	  }
+    }
+  }
+]

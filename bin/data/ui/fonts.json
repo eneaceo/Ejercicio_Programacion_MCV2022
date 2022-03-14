@@ -1,0 +1,10 @@
+[
+  {
+    "name" : "visitor",
+    "texture" : "data/textures/ui/txt_visitor_outline.dds",
+    "num_rows" : 8,
+    "num_cols" : 8,
+    "character_size" : 64
+  }
+
+]

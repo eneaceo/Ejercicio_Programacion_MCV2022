@@ -1,0 +1,99 @@
+[
+  { 
+    "entity": {
+      "name" : "gpu_particles",
+      "transform" : {
+        "pos" : "5 0 5"
+      },
+      "buffers" : {
+        "instances": {
+          "desc": "Array of active particles at the start of the frame",
+          "data_type": "TParticle",
+          "num_elems": 10240
+        },
+        "instances_active": {
+          "desc": "Array of active particles after the update",
+          "data_type": "TParticle",
+          "num_elems": 10240
+        },
+        "system": {
+          "desc": "Stores dynamic information of this system: num particles alive/dead/time to next spawn/...",
+          "desc2": "Mapped to the TSystem struct in the compute_particles.fx",
+          "bytes_per_elem": 16,
+          "num_elems": 1
+        },
+        "indirect_draw": {
+          "desc": "Buffer to keep the Arguments of the draw instanced indirect. 5 x uint. DrawIndexedInstancedArgs",
+          "bytes_per_elem": 20,
+          "num_elems": 1,
+          "is_indirect": true,
+          "desc2": "keep in sync with component render.mesh",
+          "init_indirect_from_mesh": "unit_quad_xy.mesh"
+        },
+        "indirect_update" : {
+          "desc" : "Arguments of the dispachIndirect, so the CPU never knows how many particles are alive. 3 x uint",
+          "bytes_per_elem" : 12,
+          "num_elems" : 1,
+          "is_indirect" : true
+        },
+        "CtesParticleSystem" : {
+          "desc" : "Customization of the particles",
+          "emitter_time_between_spawns" : 0.02,
+          "emitter_num_particles_per_spawn" : 20,
+          "emitter_initial_speed" : 25,
+          "emitter_initial_scale_avg" : 0.5,
+          "emitter_initial_scale_range" : 0.3,
+          "colors" : [
+            "1 1 1 1",
+            "1 0 0 1",
+            "1 1 0 1",
+            "0 1 0 1",
+            "0 1 1 1",
+            "0 0 1 1",
+            "1 1 1 1",
+            "1 1 1 0"
+          ],
+          "scales" : [
+            0, 
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            0.5
+          ]
+        }
+      },
+      "num_instances": "indirect_draw",
+      "render":
+      [
+        {
+          "desc": "keep mesh value in sync with the indirect_draw.init_indirect_from_mesh member",
+          "mesh": "unit_quad_xy.mesh",
+          "mat": "data/materials/compute_particles_billboards.mat",
+          "subgroup": 0
+        }
+      ],
+      "compute" : [
+        {
+          "desc" : "Spawning just 1 thread",
+          "cs" : "cs_particles_fountain_spawn.compute",
+          "sizes" : [1, 1, 1]
+        },
+        {
+          "desc": "Updating as many thread groups as required & defined by the buffer indirect_update",
+          "cs": "cs_particles_fountain_update.compute",
+          "sizes": {
+            "buffer": "indirect_update",
+            "offset": 0
+          }
+        },
+        {
+          "swap_a" : "instances",
+          "swap_b" : "instances_active"
+        }
+      ]
+    }
+  }
+]

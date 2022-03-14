@@ -1,0 +1,152 @@
+{
+    "name" : "main_menu",
+    "size" : "1920 1080",
+    "children" : 
+    [
+      {
+        "name" : "background",
+        "type" : "image",
+        "texture" : "data/textures/ui/menu_anim_background.dds",
+        "min_uv" : "0.25 0",
+        "max_uv" : "0.75 1",
+        "effects" : [
+          { "type" : "animate_uv", "speed" : "0.02 0" }
+        ]
+      },
+      {
+        "name" : "logo",
+        "type" : "image",
+        "texture" : "data/textures/ui/menu_logo.dds"
+      },
+      {
+        "name" : "scanlines",
+        "type" : "image",
+        "max_uv" : "1 12",
+        "color" : "16 16 16 128",
+        "texture" : "data/textures/ui/lines.dds"
+      },
+      {
+        "name" : "menu",
+        "position" : "800 650",
+        "size" : "300 400",
+        "scale" : "2 2",
+        "children" : [
+          {
+            "name" : "bt_new_game",
+            "alias" : "bt_new_game",
+            "type" : "button",
+            "size" : "224 24",
+            "texture" : "data/textures/ui/menu_boton.dds",
+            "text" : "NEW GAME",
+            "font" : "visitor",
+            "font_size" : 18,
+            "text_halign" : "center",
+            "text_valign" : "center",
+            "states" : [
+              {
+                "name" : "default",
+                "color" : "255 255 255 128",
+                "text_color" : "128 128 128 192"
+              },
+              {
+                "name" : "selected",
+                "color" : "255 255 255 255",
+                "text_color" : "255 255 255 255"
+              },
+              {
+                "name" : "pressed",
+                "color" : "255 255 0 255",
+                "text_color" : "255 255 255 255"
+              }
+            ]
+          },
+          {
+            "name" : "bt_continue",
+            "alias" : "bt_continue",
+            "type" : "button",
+            "size" : "224 24",
+            "texture" : "data/textures/ui/menu_boton.dds",
+            "text" : "CONTINUE",
+            "font" : "visitor",
+            "font_size" : 18,
+            "position" : "0 35",
+            "text_halign" : "center",
+            "text_valign" : "center",
+            "states" : [
+              {
+                "name" : "default",
+                "color" : "255 255 255 128",
+                "text_color" : "128 128 128 192"
+              },
+              {
+                "name" : "selected",
+                "color" : "255 255 255 255",
+                "text_color" : "255 255 255 255"
+              },
+              {
+                "name" : "pressed",
+                "color" : "255 255 0 255",
+                "text_color" : "255 255 255 255"
+              }
+            ]
+          },
+          {
+            "name" : "bt_exit",
+            "alias" : "bt_exit",
+            "type" : "button",
+            "size" : "224 24",
+            "texture" : "data/textures/ui/menu_boton.dds",
+            "text" : "EXIT",
+            "font" : "visitor",
+            "font_size" : 18,
+            "position" : "0 70",
+            "text_halign" : "center",
+            "text_valign" : "center",
+            "states" : [
+              {
+                "name" : "default",
+                "color" : "255 255 255 128",
+                "text_color" : "128 128 128 192"
+              },
+              {
+                "name" : "selected",
+                "color" : "255 255 255 255",
+                "text_color" : "255 255 255 255"
+              },
+              {
+                "name" : "pressed",
+                "color" : "255 255 0 255",
+                "text_color" : "255 255 255 255"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name" : "foreground",
+        "type" : "image",
+        "texture" : "data/textures/ui/menu_foreground.dds"
+      },
+      {
+        "name" : "life_bar",
+        "position" : "1400 10",
+        "size" : "256 32",
+        "scale" : "2 2",
+        "children" : [
+          {
+            "name" : "bar_background",
+            "type" : "image",
+            "size" : "256 32",
+            "texture" : "data/textures/ui/battery_empty.dds"
+          },
+          {
+            "name" : "bar_fill",
+            "type" : "progress_bar",
+            "size" : "256 32",
+            "texture" : "data/textures/ui/battery_full.dds",
+            "additive" : true
+          }
+        ]
+      }
+    ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "entity": {
+      "name": "Enemies"
+    }
+  }
+  ,
+  {
+    "entity": {
+      "prefab": "data/scenes/prefab_enemy_agresive.json",
+      "name": "Enemy Agresive"
+    }
+  },
+  {
+    "entity": {
+        "prefab": "data/scenes/prefab_enemy_defensive.json",
+        "name": "Enemy Defensive"
+      }
+    },
+  {
+    "entity": {
+      "prefab": "data/scenes/prefab_enemy_distance.json",
+      "name": "Enemy Distance"
+    }
+  }
+]

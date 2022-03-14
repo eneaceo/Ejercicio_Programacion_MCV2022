@@ -1,0 +1,6 @@
+{
+  "albedo": "data/textures/blood.dds",
+  "pipeline": "decals.pipeline",
+  "casts_shadows": false,
+  "render_channel": "decals"
+}

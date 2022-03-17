@@ -46,7 +46,7 @@ public:
 			defensePowerUp = false;
 		}
 		if (scoreUp) {
-			score += 100;
+			score += 1000;
 			scoreUp = false;
 		}
 	}

@@ -28,6 +28,7 @@
     "platform_controller",
     "bullet_controller",
     "gamestats",
+    "spawner",
     "hierarchy",
     "attached_to_bone",
     "animator_controller",

@@ -275,6 +275,8 @@
     <ClCompile Include="BehaviorTree\btnode.cpp" />
     <ClCompile Include="components\controllers\comp_wasd_controller.cpp" />
     <ClCompile Include="Ejercicio\comp_luaManager.cpp" />
+    <ClCompile Include="Ejercicio\comp_spawner.cpp" />
+    <ClCompile Include="Ejercicio\comp_powerup_defense.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="windows">
@@ -703,6 +705,7 @@
       <Filter>geometry</Filter>
     </None>
     <None Include="..\README.md" />
+    <None Include="test.lua" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="utils\nlohmann_json.natvis" />

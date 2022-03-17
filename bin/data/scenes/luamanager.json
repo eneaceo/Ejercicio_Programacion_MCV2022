@@ -3,7 +3,13 @@
     "entity": {
       "name": "luamanager",
       "luamanager" : {
-
+        "player_name" : "player",
+        "gamestats_name" : "gamestats",
+        "spawner_name" : "spawner",
+        "agresive_name" : "bt_agresive",
+        "defensive_name" : "bt_defensive",
+        "distance_name" : "bt_distance",
+        "btmanager_name" : "bt_manager"
       }
     }
   }

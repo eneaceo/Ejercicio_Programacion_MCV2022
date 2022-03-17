@@ -1,0 +1,18 @@
+[
+  {
+    "entity": {
+      "name": "defense",
+      "powerup_defense" : {
+        "gamestats_name" : "gamestats"
+      },
+        "transform": {
+          "pos": "-2.5 1 2.5"
+        },
+        "collider" : {
+          "shape" : "sphere",
+          "radius" : 1,
+          "trigger" : true
+        }
+      }
+    }
+]

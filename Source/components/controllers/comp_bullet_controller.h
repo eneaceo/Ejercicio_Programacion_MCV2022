@@ -12,7 +12,7 @@ class TCompBulletController : public TCompBase
 	
 	std::string gamestats_name;
 	CHandle h_gamestats;
-
+	bool destroy = false;
     float speed = 1.f;
 	void OnTriggerEnter(const TMsgEntityTriggerEnter& msg);
 	//void OnTriggerExit(const TMsgEntityTriggerExit& msg);

@@ -14,6 +14,8 @@ class TCompBTmanager : public TCompBase {
 	// Macro to allow access from this component to other sibling components using the get<T>()
 	DECL_SIBLING_ACCESS()
 
+	CHandle h_luaManager;
+
 	CHandle attacker;
 	std::string attackerSlot;
 	std::string attacker_name;
@@ -51,6 +53,12 @@ public:
 			msg.attacker = attacker;
 			msg_target->sendMsg(msg);
 		}
+
+		if (enemiesEngaged == 0) {
+			TMsgNextWave msg;
+			CEntity* msg_target = h_luaManager;
+			msg_target->sendMsg(msg);
+		}
 	}
 
 	static void registerMsgs() {
@@ -58,6 +66,7 @@ public:
 		DECL_MSG(TCompBTmanager, TMsgAskForAttacker, answerAttacker);
 		DECL_MSG(TCompBTmanager, TMsgDying, dying);
 		DECL_MSG(TCompBTmanager, TMsgChangeAttacker, changeAttacker);
+		DECL_MSG(TCompBTmanager, TMsgSetLuaManager, setLuaManager);
 	}
 
 	void registerEngage(const TMsgEngage& msg) {
@@ -81,6 +90,10 @@ public:
 			CEntity* e_attacker = msg.me;
 			attackerSlot = e_attacker->getName();
 			attacker = msg.me;
+	}
+
+	void setLuaManager(const TMsgSetLuaManager& msg) {
+		h_luaManager = msg.h_luaManager;
 	}
 
 };

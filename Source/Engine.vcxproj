@@ -60,6 +60,8 @@
     <ClCompile Include="Ejercicio\comp_gamestats.cpp" />
     <ClCompile Include="Ejercicio\comp_luaManager.cpp" />
     <ClCompile Include="Ejercicio\comp_potion.cpp" />
+    <ClCompile Include="Ejercicio\comp_powerup_defense.cpp" />
+    <ClCompile Include="Ejercicio\comp_spawner.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="entity\entity.cpp" />
     <ClCompile Include="entity\entity_parser.cpp" />
@@ -356,6 +358,7 @@
   <ItemGroup>
     <None Include="..\README.md" />
     <None Include="geometry\SimpleMath.inl" />
+    <None Include="test.lua" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="handle\handle.natvis" />

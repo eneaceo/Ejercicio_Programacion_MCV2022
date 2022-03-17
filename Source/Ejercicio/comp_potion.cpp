@@ -38,6 +38,7 @@ public:
 		TMsgPotion heal;
 		CEntity* msg_target = h_gamestats;
 		msg_target->sendMsg(heal);
+		CHandle(this).getOwner().destroy();
 	}
 
 };

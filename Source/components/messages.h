@@ -90,8 +90,55 @@ struct TMsgShoot {
 
 struct TMsgPotion {
     DECL_MSG_ID();
+}; 
+
+struct TMsgPowerUpDefense {
+    DECL_MSG_ID();
 };
 
 struct TMsgShootHit {
     DECL_MSG_ID();
+};
+
+//LUA Msg
+
+struct TMsgSetLuaManager {
+    DECL_MSG_ID();
+    CHandle h_luaManager;
+};
+
+struct TMsgNextWave {
+    DECL_MSG_ID();
+};
+
+struct TMsgSetLife {
+    DECL_MSG_ID();
+    float life;
+};
+
+struct TMsgSetPotionHeal {
+    DECL_MSG_ID();
+    int potionHeal;
+};
+
+struct TMsgSetHitDamage {
+    DECL_MSG_ID();
+    int playerHitDamage;
+};
+
+struct TMsgSetMaxLife {
+    DECL_MSG_ID();
+    float maxLife;
+};
+
+struct TMsgSpawnRandomEnemies {
+    DECL_MSG_ID();
+    int numEnemies;
+};
+
+struct TMsgSpawnPosition {
+    DECL_MSG_ID();
+    float px;
+    float py;
+    float pz;
 };

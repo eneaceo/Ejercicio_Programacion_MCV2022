@@ -4,7 +4,7 @@
     {
       "name": "Enemigo defensive",
       "transform" : {
-        "pos" : "10 0 10"
+        "pos" : "0 0 0"
       },
       "bt_defensive" : {
         "target_name" : "player",

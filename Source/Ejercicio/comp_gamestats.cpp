@@ -14,34 +14,41 @@ class TCompGameStats : public TCompBase {
 	// Macro to allow access from this component to other sibling components using the get<T>()
 	DECL_SIBLING_ACCESS()
 
-	int life;
-	int maxLife;
+	int life = 0;
+	int maxLife = 0;
+	int potionHeal = 0;
+	int hitDamage = 0;
 	bool potion = false;
+	bool defensePowerUp = false;
 	bool shootHit = false;
 
 public:
 
 	void load(const json& j, TEntityParseContext& ctx) {
-		life = j.value("life", life);
-		maxLife = j.value("maxLife", maxLife);
+		//life = j.value("life", life);
+		//maxLife = j.value("maxLife", maxLife);
 	}
 
 	void update(float dt) {
-		if (potion && life < 200) {
-			life += 10;
-			if (life > 200) life = maxLife;
+		if (potion && life < maxLife) {
+			life += potionHeal;
+			if (life > maxLife) life = maxLife;
 			potion = false;
 		}
 		if (shootHit) {
-			life -= 10;
+			life -= hitDamage;
 			shootHit = false;
+		}
+		if (defensePowerUp) {
+			hitDamage = hitDamage / 2;
+			defensePowerUp = false;
 		}
 	}
 
 	void debugInMenu() {
 		ImGui::Text("Life: %d", life);
 		ImGui::SameLine();
-		ImGui::Text("MaxLife: 200");
+		ImGui::Text("MaxLife: %d", maxLife);
 		if (ImGui::SmallButton("-10")) {
 			life -= 10;
 		}
@@ -50,15 +57,40 @@ public:
 
 	static void registerMsgs() {
 		DECL_MSG(TCompGameStats, TMsgPotion, Potion);
+		DECL_MSG(TCompGameStats, TMsgPowerUpDefense, DefensePowerUp);
 		DECL_MSG(TCompGameStats, TMsgShootHit, ShootHit);
+		DECL_MSG(TCompGameStats, TMsgSetLife, SetLife);
+		DECL_MSG(TCompGameStats, TMsgSetMaxLife, SetMaxLife);
+		DECL_MSG(TCompGameStats, TMsgSetPotionHeal, SetPotionHeal);
+		DECL_MSG(TCompGameStats, TMsgSetHitDamage, SetHitDamage);
 	}
 
 	void Potion(const TMsgPotion& msg) {
 		potion = true;
 	}
 
+	void DefensePowerUp(const TMsgPowerUpDefense& msg) {
+		defensePowerUp = true;
+	}
+
 	void ShootHit(const TMsgShootHit& msg) {
 		shootHit = true;
+	}
+
+	void SetLife(const TMsgSetLife& msg) {
+		life = msg.life;
+	}
+
+	void SetMaxLife(const TMsgSetMaxLife& msg) {
+		maxLife = msg.maxLife;
+	}
+
+	void SetPotionHeal(const TMsgSetPotionHeal& msg) {
+		potionHeal = msg.potionHeal;
+	}
+
+	void SetHitDamage(const TMsgSetHitDamage& msg) {
+		hitDamage = msg.playerHitDamage;
 	}
 
 };

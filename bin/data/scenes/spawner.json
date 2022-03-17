@@ -1,0 +1,12 @@
+[
+  {
+    "entity": {
+      "name": "spawner",
+      "spawner" : {
+      },
+        "transform": {
+          "pos": "0 0 10"
+        }
+      }
+    }
+]

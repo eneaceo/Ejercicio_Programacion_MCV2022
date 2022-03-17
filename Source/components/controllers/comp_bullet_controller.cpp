@@ -14,6 +14,7 @@ void TCompBulletController::OnTriggerEnter(const TMsgEntityTriggerEnter& msg) {
 	TMsgShootHit hit;
 	CEntity* msg_target = h_gamestats;
 	msg_target->sendMsg(hit);
+	destroy = true;
 }
 
 //void TCompBulletController::OnTriggerExit(const TMsgEntityTriggerExit& msg) {}
@@ -42,6 +43,11 @@ void TCompBulletController::update(float dt)
 	if (c_collider && c_collider->actor) {
 		physx::PxRigidDynamic* rigid_dynamic = (physx::PxRigidDynamic*)c_collider->actor;
 		rigid_dynamic->setGlobalPose(toPxTransform(*c_trans));
+	}
+
+	if (destroy) {
+		CHandle(this).getOwner().destroy();
+		return;
 	}
 }
 

@@ -4,11 +4,12 @@
     "data/scenes/player.json",
     "data/scenes/helpers.json",
     "data/scenes/lights.json",
-    "data/scenes/btdebug.json",
+    "data/scenes/btmanager.json",
+    "data/scenes/spawner.json",
     "data/scenes/luamanager.json",
-    "data/scenes/my_scene_enemies.json",
     "data/scenes/my_scene_arena.json",
-    "data/scenes/potion.json"
+    "data/scenes/potion.json",
+    "data/scenes/powerup_defense.json"
   ],
   "scenes_to_not_load": [
     "data/scenes/test_fsm.json",

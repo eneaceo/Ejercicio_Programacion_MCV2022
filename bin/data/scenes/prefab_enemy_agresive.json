@@ -4,7 +4,7 @@
     {
       "name": "Enemigo agresive",
       "transform" : {
-        "pos" : "-10 0 10"
+        "pos" : "0 0 0"
       },
       "bt_agresive" : {
         "target_name" : "player",

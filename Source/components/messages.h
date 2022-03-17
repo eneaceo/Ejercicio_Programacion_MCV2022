@@ -100,6 +100,10 @@ struct TMsgShootHit {
     DECL_MSG_ID();
 };
 
+struct TMsgKill {
+    DECL_MSG_ID();
+};
+
 //LUA Msg
 
 struct TMsgSetLuaManager {

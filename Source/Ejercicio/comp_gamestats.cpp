@@ -21,6 +21,8 @@ class TCompGameStats : public TCompBase {
 	bool potion = false;
 	bool defensePowerUp = false;
 	bool shootHit = false;
+	bool scoreUp = false;
+	int score = 0;
 
 public:
 
@@ -43,12 +45,17 @@ public:
 			hitDamage = hitDamage / 2;
 			defensePowerUp = false;
 		}
+		if (scoreUp) {
+			score += 100;
+			scoreUp = false;
+		}
 	}
 
 	void debugInMenu() {
 		ImGui::Text("Life: %d", life);
 		ImGui::SameLine();
 		ImGui::Text("MaxLife: %d", maxLife);
+		ImGui::Text("Score: %d", score);
 		if (ImGui::SmallButton("-10")) {
 			life -= 10;
 		}
@@ -63,6 +70,7 @@ public:
 		DECL_MSG(TCompGameStats, TMsgSetMaxLife, SetMaxLife);
 		DECL_MSG(TCompGameStats, TMsgSetPotionHeal, SetPotionHeal);
 		DECL_MSG(TCompGameStats, TMsgSetHitDamage, SetHitDamage);
+		DECL_MSG(TCompGameStats, TMsgKill, enemieKilled);
 	}
 
 	void Potion(const TMsgPotion& msg) {
@@ -91,6 +99,10 @@ public:
 
 	void SetHitDamage(const TMsgSetHitDamage& msg) {
 		hitDamage = msg.playerHitDamage;
+	}
+
+	void enemieKilled(const TMsgKill& msg) {
+		scoreUp = true;
 	}
 
 };

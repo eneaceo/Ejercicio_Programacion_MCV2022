@@ -3,7 +3,7 @@
     "entity": {
       "name": "bt_manager",
       "bt_manager" : {
-
+        "gamestats_name" : "gamestats"
       }
     }
   }

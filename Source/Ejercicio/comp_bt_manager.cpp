@@ -15,16 +15,27 @@ class TCompBTmanager : public TCompBase {
 	DECL_SIBLING_ACCESS()
 
 	CHandle h_luaManager;
+	CHandle h_gamestats;
+	std::string gamestats_name;
 
 	CHandle attacker;
 	std::string attackerSlot;
 	std::string attacker_name;
 	int enemiesEngaged;
+	int enemiesEngagedBefore;
 	std::vector<CHandle> whoIsEngaged;
-
 	bool freeAttackerSlot = false;
 
 public:
+
+	void onEntityCreated() {
+		h_gamestats = getEntityByName(gamestats_name);
+		if (!h_gamestats.isValid()) return;
+	}
+
+	void load(const json& j, TEntityParseContext& ctx) {
+		gamestats_name = j.value("gamestats_name", gamestats_name);
+	}
 
 	//debug
 	void debugInMenu() {
@@ -59,6 +70,17 @@ public:
 			CEntity* msg_target = h_luaManager;
 			msg_target->sendMsg(msg);
 		}
+
+		if (enemiesEngaged > enemiesEngagedBefore) {
+			enemiesEngagedBefore = enemiesEngaged;
+		} 
+		if (enemiesEngaged < enemiesEngagedBefore) {
+			enemiesEngagedBefore = enemiesEngaged;
+			TMsgKill msg;
+			CEntity* msg_target = h_gamestats;
+			msg_target->sendMsg(msg);
+		}
+
 	}
 
 	static void registerMsgs() {

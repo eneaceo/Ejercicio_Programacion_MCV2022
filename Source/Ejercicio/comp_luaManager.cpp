@@ -124,7 +124,7 @@ public:
 
 		try {
 			//BUSCAR SOLUCION A ESTO!!!!!!!
-			s.doFile("C:/Users/eneac/Desktop/EjercicioAbril/Source/test.lua");
+			s.doFile("D:/Universidad/EjercicioAbril/Source/test.lua");
 		} catch (std::exception x) {
 			printf("error %s\n", x.what());
 		}
@@ -157,7 +157,7 @@ public:
 		SLB::Script s(&m);
 		try {
 			//BUSCAR SOLUCION A ESTO!!!!!!!
-			s.doFile("C:/Users/eneac/Desktop/EjercicioAbril/Source/test.lua");
+			s.doFile("D:/Universidad/EjercicioAbril/Source/test.lua");
 		} catch (std::exception x) {
 			printf("error %s\n", x.what());
 		}

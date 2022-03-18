@@ -18,20 +18,27 @@ class bt_playerController :public bt {
 	CHandle h_collider;
 
 	float speed;
+	float turn_speed = 0.2f;
 	float dt;
 
 	float timer;
+	bool cinematic = false;
+	VEC3 cinematicPosTarget;
 
 public:
 
 	void Init(CHandle,CHandle, float);
 	void updateTime(float);
 
+	void setCinematicMovement(bool, VEC3);
+
 	//bt decorators
+	int DecoratorCinema();
 	int DecoratorMovement();
 	int DecoratorAttack();
 
 	//bt tasks
+	int TaskCinema();
 	int TaskMovement();
 	int TaskAttack();
 

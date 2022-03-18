@@ -9,11 +9,15 @@
 
 #include "../Tools/SLB/include/SLB/SLB.hpp"
 
-//BUSCAR SOLUCION A ESTO!!!!!!
+//BUSCAR SOLUCION A ESTO!!!!
 CHandle h_gamestats;
 CHandle h_player;
 CHandle h_spawner;
 CHandle h_btmanager;
+CHandle h_player_controller;
+
+bool moveForward = false;
+VEC3 targetPoint;
 
 class TCompLuaManager : public TCompBase {
 
@@ -87,8 +91,14 @@ public:
 			msg_target->sendMsg(msg);
 		}
 
-	};
+		void MovePlayer(float px, float py, float pz) {
+			TMsgMove msg;
+			CEntity* msg_target = h_player;
+			msg.newPos = VEC3(px,py,pz);
+			msg_target->sendMsg(msg);
+		}
 
+	};
 
 	void BootLuaSLB(SLB::Manager* m) {
 		SLB::Class< LogicManager >("LogicManager", m)
@@ -100,6 +110,7 @@ public:
 			.set("SetPlayerMaxLife", &LogicManager::SetPlayerMaxLife)
 			.set("setSpawnPosition", &LogicManager::setSpawnPosition)
 			.set("SpawnRandomEnemies", &LogicManager::SpawnRandomEnemies)
+			.set("MovePlayer", &LogicManager::MovePlayer)
 			;
 
 	}
@@ -115,7 +126,6 @@ public:
 		if (!h_spawner.isValid()) return;
 		h_btmanager = getEntityByName(btmanager_name);
 		if (!h_btmanager.isValid()) return;
-
 
 		//LUA
 		SLB::Manager m;

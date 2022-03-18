@@ -48,8 +48,7 @@
     "entity": {
       "name": "gamestats",
       "gamestats" : {
-        "life" : 200,
-        "maxLife": 200
+        
       }
     }
   }

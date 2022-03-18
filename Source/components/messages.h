@@ -146,3 +146,8 @@ struct TMsgSpawnPosition {
     float py;
     float pz;
 };
+
+struct TMsgMove {
+    DECL_MSG_ID();
+    VEC3 newPos;
+};

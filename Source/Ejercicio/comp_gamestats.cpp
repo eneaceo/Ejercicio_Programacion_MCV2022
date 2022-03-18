@@ -24,12 +24,9 @@ class TCompGameStats : public TCompBase {
 	bool scoreUp = false;
 	int score = 0;
 
-public:
+	CHandle h_my_transform;
 
-	void load(const json& j, TEntityParseContext& ctx) {
-		//life = j.value("life", life);
-		//maxLife = j.value("maxLife", maxLife);
-	}
+public:
 
 	void update(float dt) {
 		if (potion && life < maxLife) {
@@ -49,6 +46,7 @@ public:
 			score += 1000;
 			scoreUp = false;
 		}
+
 	}
 
 	void debugInMenu() {

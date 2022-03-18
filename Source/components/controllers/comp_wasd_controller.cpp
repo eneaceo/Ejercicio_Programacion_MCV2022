@@ -7,6 +7,7 @@
 #include "entity/entity.h"
 #include "entity/entity_parser.h"
 #include "input/input_module.h"
+#include "components/messages.h"
 
 #include "Ejercicio/bt_playerController.h"
 
@@ -42,17 +43,16 @@ struct TCompWASDController : public TCompBase {
   void update(float dt) {
 	
 	bt.updateTime(dt);
-
-	//auto input = CEngine::get().getInput(input::PLAYER_1);
-
-	//if (input->getKey((input::EKeyboardKey)key_toggle_enable).getsPressed())
-	//	enabled = !enabled;
-
-	//if (!enabled)
-	//	return;
-
 	bt.recalc();
-    
+
+  }
+
+  static void registerMsgs() {
+	  DECL_MSG(TCompWASDController, TMsgMove, move);
+  }
+
+  void move(const TMsgMove& msg) {
+	  bt.setCinematicMovement(true, msg.newPos);
   }
 
 };

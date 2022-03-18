@@ -5,6 +5,9 @@
 void bt_playerController::Init(CHandle h_my_transform, CHandle h_collider, float speed) {
 
 	CreateRootNode("root", SELECTOR);
+	//Cinematic movement
+	AddDecoratorNode("root", "dec_cinema", (bttask)&bt_playerController::DecoratorCinema);
+	AddTaskNode("dec_cinema", "cinema", (bttask)&bt_playerController::TaskCinema);
 	//Attack
 	AddDecoratorNode("root", "dec_attack", (bttask)&bt_playerController::DecoratorAttack);
 	AddTaskNode("dec_attack", "attack", (bttask)&bt_playerController::TaskAttack);
@@ -95,4 +98,61 @@ int bt_playerController::TaskAttack() {
 		timer = 0;
 		return SUCCESS;
 	}
+}
+
+//Cimeatic movement
+
+void bt_playerController::setCinematicMovement(bool cinematic, VEC3 newPos) {
+	this->cinematic = cinematic;
+	cinematicPosTarget = newPos;
+}
+
+int bt_playerController::DecoratorCinema() {
+	if (cinematic) return SUCCESS;
+	else return FAIL;
+}
+
+int bt_playerController::TaskCinema() {
+
+	//rotate to target
+	TCompTransform* my_transform = h_my_transform;
+	float angle_to_aim = my_transform->getYawRotationToAimTo(cinematicPosTarget);
+	angle_to_aim *= turn_speed;
+	QUAT my_rot = my_transform->getRotation();
+	my_rot *= QUAT::CreateFromAxisAngle(VEC3::UnitY, angle_to_aim);
+	my_transform->setRotation(my_rot);
+	//move forward
+	float amount_moved = speed * dt;
+	VEC3 delta_moved = my_transform->getForward() * amount_moved;
+	my_transform->setPosition(my_transform->getPosition() + delta_moved);
+
+	TCompCollider* compCollider = h_collider;
+	if (compCollider != nullptr && compCollider->controller) {
+		delta_moved.y += -9.81f * dt;
+
+		static const physx::PxU32 max_shapes = 8;
+		physx::PxShape* shapes[max_shapes];
+
+		physx::PxU32 nshapes = compCollider->controller->getActor()->getNbShapes();
+		assert(nshapes <= max_shapes);
+
+		// Even when the buffer is small, it writes all the shape pointers
+		physx::PxU32 shapes_read = compCollider->controller->getActor()->getShapes(shapes, sizeof(shapes), 0);
+
+		// Make a copy of the pxFilterData because the result of getQueryFilterData is returned by copy
+		physx::PxFilterData filterData = shapes[0]->getQueryFilterData();
+		physx::PxControllerFilters controllerFilters(&filterData, &CEngine::get().getPhysics().customQueryFilterCallback);
+		compCollider->controller->move(physx::PxVec3(delta_moved.x, delta_moved.y, delta_moved.z), 0.0f, dt, controllerFilters);
+	}
+
+
+	float dist = VEC3::Distance(my_transform->getPosition(), cinematicPosTarget);
+
+	if (dist < 0.1f) {
+		cinematic = false;
+		cinematicPosTarget = VEC3(0,0,0);
+		return SUCCESS;
+	}
+	else return IN_PROGRESS;
+
 }

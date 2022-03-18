@@ -8,6 +8,7 @@ lm:SetPlayerMaxLife(150);
 lm:SetPotionHealing(50);
 lm:SetPlayerHitDamage(20);
 lm:setSpawnPosition(0,0,10);
+lm:MovePlayer(5,0,5);
 end
 
 function NextWave()

@@ -14,6 +14,8 @@ class TCompBTmanager : public TCompBase {
 	// Macro to allow access from this component to other sibling components using the get<T>()
 	DECL_SIBLING_ACCESS()
 
+	bool killAll = false;
+
 	CHandle h_luaManager;
 	CHandle h_gamestats;
 	std::string gamestats_name;
@@ -58,14 +60,16 @@ public:
 
 		enemiesEngaged = whoIsEngaged.size();
 
-		for (CHandle c : whoIsEngaged) {
-			TMsgAttacker msg;
-			CEntity* msg_target = c;
-			msg.attacker = attacker;
-			msg_target->sendMsg(msg);
+		if(enemiesEngaged != 0 ){
+			for (CHandle c : whoIsEngaged) {
+				TMsgAttacker msg;
+				CEntity* msg_target = c;
+				msg.attacker = attacker;
+				msg_target->sendMsg(msg);
+			}
 		}
 
-		if (enemiesEngaged == 0) {
+		if (enemiesEngaged == 0 && !killAll) {
 			TMsgNextWave msg;
 			CEntity* msg_target = h_luaManager;
 			msg_target->sendMsg(msg);
@@ -81,6 +85,19 @@ public:
 			msg_target->sendMsg(msg);
 		}
 
+		if (killAll) {
+			for (CHandle c : whoIsEngaged) {
+				TMsgDestroyMe msg;
+				CEntity* msg_target = c;
+				msg_target->sendMsg(msg);
+			}
+			whoIsEngaged.clear();
+			enemiesEngaged = 0;
+			enemiesEngagedBefore = 0;
+			freeAttackerSlot = true;
+			killAll = false;
+		}
+
 	}
 
 	static void registerMsgs() {
@@ -89,6 +106,7 @@ public:
 		DECL_MSG(TCompBTmanager, TMsgDying, dying);
 		DECL_MSG(TCompBTmanager, TMsgChangeAttacker, changeAttacker);
 		DECL_MSG(TCompBTmanager, TMsgSetLuaManager, setLuaManager);
+		DECL_MSG(TCompBTmanager, TMsgDespawnEnemies, despawnEnemies);
 	}
 
 	void registerEngage(const TMsgEngage& msg) {
@@ -116,6 +134,10 @@ public:
 
 	void setLuaManager(const TMsgSetLuaManager& msg) {
 		h_luaManager = msg.h_luaManager;
+	}
+
+	void despawnEnemies(const TMsgDespawnEnemies& msg) {
+		killAll = true;
 	}
 
 };

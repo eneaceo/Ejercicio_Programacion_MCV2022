@@ -36,31 +36,37 @@ public:
 	class LogicManager {
 
 		float playerLife;
+		float playerMaxLife;
+		float playerHitDamage;
+		float playerShootHitDamage;
+		float potionHeal;
+		bool spawnState;
 
 	public:
 
+
 		LogicManager() {
 			playerLife = 0.0f;
+			playerMaxLife = 0.0f;
+			playerHitDamage = 0.0f;
+			playerShootHitDamage = 0.0f;
+			potionHeal = 0.0f;
+			spawnState = false;
 		}
 
 		void SetPlayerLife(float playerLife) {
+			this->playerLife = playerLife;
 			TMsgSetLife msg;
 			CEntity* msg_target = h_gamestats;
-			msg.life = playerLife;
+			msg.life = this->playerLife;
 			msg_target->sendMsg(msg);
 		}
 
-		void SetPotionHealing(float potionHeal) {
-			TMsgSetPotionHeal msg;
+		void SetPlayerMaxLife(float playerMaxLife) {
+			this->playerMaxLife = playerMaxLife;
+			TMsgSetMaxLife msg;
 			CEntity* msg_target = h_gamestats;
-			msg.potionHeal = potionHeal;
-			msg_target->sendMsg(msg);
-		}
-
-		void SetPlayerHitDamage(float playerHitDamage) {
-			TMsgSetHitDamage msg;
-			CEntity* msg_target = h_gamestats;
-			msg.playerHitDamage = playerHitDamage;
+			msg.maxLife = this->playerMaxLife;
 			msg_target->sendMsg(msg);
 		}
 
@@ -68,10 +74,39 @@ public:
 			return playerLife;
 		}
 
-		void SetPlayerMaxLife(float playerMaxLife) {
-			TMsgSetMaxLife msg;
+		float GetPlayerMaxLife() {
+			return playerMaxLife;
+		}
+
+		void SetPotionHealing(float potionHeal) {
+			this->potionHeal = potionHeal;
+			TMsgSetPotionHeal msg;
 			CEntity* msg_target = h_gamestats;
-			msg.maxLife = playerMaxLife;
+			msg.potionHeal = potionHeal;
+			msg_target->sendMsg(msg);
+		}
+
+		void SetPlayerShootHitDamage(float playerShootHitDamage) {
+			this->playerShootHitDamage = playerShootHitDamage;
+			TMsgSetShootHitDamage msg;
+			CEntity* msg_target = h_gamestats;
+			msg.playerShootHitDamage = playerShootHitDamage;
+			msg_target->sendMsg(msg);
+		}
+
+		void SetPlayerHitDamage(float playerHitDamage) {
+			this->playerHitDamage = playerHitDamage;
+			TMsgSetHitDamage msg;
+			CEntity* msg_target = h_gamestats;
+			msg.playerHitDamage = playerHitDamage;
+			msg_target->sendMsg(msg);
+		}
+
+		void setSpawnState(bool state) {
+			spawnState = state;
+			TMsgSpawnState msg;
+			CEntity* msg_target = h_spawner;
+			msg.state = state;
 			msg_target->sendMsg(msg);
 		}
 
@@ -98,19 +133,29 @@ public:
 			msg_target->sendMsg(msg);
 		}
 
+		void DespawnEnemies() {
+			TMsgDespawnEnemies msg;
+			CEntity* msg_target = h_btmanager;
+			msg_target->sendMsg(msg);
+		}
+
 	};
 
 	void BootLuaSLB(SLB::Manager* m) {
 		SLB::Class< LogicManager >("LogicManager", m)
 			.constructor()
 			.set("SetPlayerLife", &LogicManager::SetPlayerLife)
-			.set("SetPotionHealing", &LogicManager::SetPotionHealing)
-			.set("SetPlayerHitDamage", &LogicManager::SetPlayerHitDamage)
 			.set("GetPlayerLife", &LogicManager::GetPlayerLife)
 			.set("SetPlayerMaxLife", &LogicManager::SetPlayerMaxLife)
+			.set("GetPlayerMaxLife", &LogicManager::GetPlayerMaxLife)
+			.set("SetPlayerHitDamage", &LogicManager::SetPlayerHitDamage)
+			.set("SetPlayerShootHitDamage", &LogicManager::SetPlayerShootHitDamage)
 			.set("setSpawnPosition", &LogicManager::setSpawnPosition)
+			.set("setSpawnState", &LogicManager::setSpawnState)
 			.set("SpawnRandomEnemies", &LogicManager::SpawnRandomEnemies)
 			.set("MovePlayer", &LogicManager::MovePlayer)
+			.set("SetPotionHealing", &LogicManager::SetPotionHealing)
+			.set("DespawnEnemies", &LogicManager::DespawnEnemies)
 			;
 
 	}
@@ -147,6 +192,9 @@ public:
 		CEntity* msg_target = h_btmanager;
 		msg.h_luaManager = CHandle(this).getOwner();;
 		msg_target->sendMsg(msg);
+
+		msg_target = h_gamestats;
+		msg_target->sendMsg(msg);
 	}
 
 	void load(const json& j, TEntityParseContext& ctx) {
@@ -159,18 +207,40 @@ public:
 
 	static void registerMsgs() {
 		DECL_MSG(TCompLuaManager, TMsgNextWave, nextWave);
+		DECL_MSG(TCompLuaManager, TMsgPlayerDead, playerDead);
 	}
 
-	void nextWave(const TMsgNextWave& msg) {
+	void playerDead(const TMsgPlayerDead& msg) {
+
 		SLB::Manager m;
 		BootLuaSLB(&m);
 		SLB::Script s(&m);
+
 		try {
 			//BUSCAR SOLUCION A ESTO!!!!!!!
 			s.doFile("D:/Universidad/EjercicioAbril/Source/test.lua");
 		} catch (std::exception x) {
 			printf("error %s\n", x.what());
 		}
+
+		if (s.exists("PlayerDead")) {
+			s.doString("PlayerDead()");
+		}
+	}
+
+	void nextWave(const TMsgNextWave& msg) {
+
+		SLB::Manager m;
+		BootLuaSLB(&m);
+		SLB::Script s(&m);
+
+		try {
+			//BUSCAR SOLUCION A ESTO!!!!!!!
+			s.doFile("D:/Universidad/EjercicioAbril/Source/test.lua");
+		} catch (std::exception x) {
+			printf("error %s\n", x.what());
+		}
+
 		if (s.exists("NextWave")) {
 			s.doString("NextWave()");
 		}

@@ -65,11 +65,11 @@ public:
 	static void registerMsgs() {
 		DECL_MSG(TCompSpawner, TMsgSpawnRandomEnemies, spawnRandonEnemies);
 		DECL_MSG(TCompSpawner, TMsgSpawnPosition, setSpawnPosition);
+		DECL_MSG(TCompSpawner, TMsgSpawnState, setSpawnState);
 	}
 
 	void spawnRandonEnemies(const TMsgSpawnRandomEnemies& msg) {
 		numEnemies = msg.numEnemies;
-		spawn = true;
 	}
 
 	void setSpawnPosition(const TMsgSpawnPosition& msg) {
@@ -77,6 +77,10 @@ public:
 		newPos.y = msg.py;
 		newPos.z = msg.pz;
 		changePos = true;
+	}
+
+	void setSpawnState(const TMsgSpawnState& msg) {
+		spawn = msg.state;
 	}
 
 };

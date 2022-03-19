@@ -106,6 +106,14 @@ struct TMsgKill {
 
 //LUA Msg
 
+struct TMsgPlayerDead {
+    DECL_MSG_ID();
+};
+
+struct TMsgDespawnEnemies {
+    DECL_MSG_ID();
+};
+
 struct TMsgSetLuaManager {
     DECL_MSG_ID();
     CHandle h_luaManager;
@@ -130,6 +138,11 @@ struct TMsgSetHitDamage {
     int playerHitDamage;
 };
 
+struct TMsgSetShootHitDamage {
+    DECL_MSG_ID();
+    int playerShootHitDamage;
+};
+
 struct TMsgSetMaxLife {
     DECL_MSG_ID();
     float maxLife;
@@ -150,4 +163,9 @@ struct TMsgSpawnPosition {
 struct TMsgMove {
     DECL_MSG_ID();
     VEC3 newPos;
+};
+
+struct TMsgSpawnState {
+    DECL_MSG_ID();
+    bool state;
 };

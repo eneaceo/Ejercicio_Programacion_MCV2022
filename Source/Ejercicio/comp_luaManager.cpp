@@ -179,7 +179,7 @@ public:
 
 		try {
 			//BUSCAR SOLUCION A ESTO!!!!!!!
-			s.doFile("D:/Universidad/EjercicioAbril/Source/test.lua");
+			s.doFile("../Source/test.lua");
 		} catch (std::exception x) {
 			printf("error %s\n", x.what());
 		}
@@ -218,7 +218,7 @@ public:
 
 		try {
 			//BUSCAR SOLUCION A ESTO!!!!!!!
-			s.doFile("D:/Universidad/EjercicioAbril/Source/test.lua");
+			s.doFile("../Source/test.lua");
 		} catch (std::exception x) {
 			printf("error %s\n", x.what());
 		}
@@ -236,7 +236,7 @@ public:
 
 		try {
 			//BUSCAR SOLUCION A ESTO!!!!!!!
-			s.doFile("D:/Universidad/EjercicioAbril/Source/test.lua");
+			s.doFile("../Source/test.lua");
 		} catch (std::exception x) {
 			printf("error %s\n", x.what());
 		}

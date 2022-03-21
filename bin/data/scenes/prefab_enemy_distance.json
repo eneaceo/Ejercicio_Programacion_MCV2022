@@ -15,18 +15,33 @@
       },
       "render": [
         {
-          "mesh": "data/skeletons/exo/exo_suit.mesh",
-          "mat": "data/skeletons/exo/suit.mat"
+          "mesh": "data/skeletons/distance_enemy/distance_enemy_clothes.mesh",
+          "mat": "data/skeletons/distance_enemy/distance_enemy_clothes.mat"
         },
 
         {
-          "mesh": "data/skeletons/exo/exo_body.mesh",
-          "mat": "data/skeletons/exo/body.mat"
+          "mesh": "data/skeletons/distance_enemy/distance_enemy_body.mesh",
+          "mat": "data/skeletons/distance_enemy/distance_enemy_body.mat"
+        },
+
+        {
+          "mesh": "data/skeletons/distance_enemy/distance_enemy_eyelashes.mesh",
+          "mat": "data/skeletons/distance_enemy/distance_enemy_body.mat"
+        },
+
+        {
+          "mesh": "data/skeletons/distance_enemy/distance_enemy_eyes.mesh",
+          "mat": "data/skeletons/distance_enemy/distance_enemy_body.mat"
+        },
+
+        {
+          "mesh": "data/skeletons/distance_enemy/bow.mesh",
+          "mat": "data/skeletons/distance_enemy/bow.mat"
         }
       ],
       "abs_aabb": {},
       "armature": {
-        "src": "data/skeletons/exo/exo.skeleton"
+        "src": "data/skeletons/distance_enemy/distance_enemy.skeleton"
       }
     }
   }

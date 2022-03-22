@@ -1,0 +1,5 @@
+{
+  "albedo": "data/skeletons/agresive_enemy/agresive_enemy_diffuse.dds",
+  "normal": "data/skeletons/agresive_enemy/agresive_enemy_normal.dds",
+  "uses_skin" : true
+}

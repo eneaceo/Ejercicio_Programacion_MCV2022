@@ -1,0 +1,14 @@
+{
+  "name": "defensive_enemy",
+  "anims": [
+    { "name": "idle" }
+  ],
+  "meshes": [
+    "defensive_enemy_body",
+    "defensive_enemy_helmet",
+    "sword",
+    "shield"
+  ],
+  "bone_ids_to_debug": [ ],
+  "lookat_corrections": [ ]
+}

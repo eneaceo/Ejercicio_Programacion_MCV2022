@@ -1,12 +1,24 @@
 {
   "name": "distance_enemy",
   "anims": [
-    { "name": "idle" }
+    { "name": "idle" },
+    { "name": "aim_idle" },
+    { "name": "impact" },
+    { "name": "dying" },
+    { "name": "taunt" },
+    { "name": "walk_forward" },
+    { "name": "walk_back" },
+    { "name": "walk_left" },
+    { "name": "walk_right" },
+    { "name": "draw_arrow" },
+    { "name": "shoot_arrow" },
+    { "name": "mele_punch" },
+    { "name": "mele_kick" }
   ],
   "meshes": [
     "distance_enemy_body",
     "distance_enemy_clothes",
-    "distance_enemy_bow",
+    "bow",
     "distance_enemy_eyes",
     "distance_enemy_eyelashes"
   ],

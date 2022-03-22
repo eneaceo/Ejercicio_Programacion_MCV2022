@@ -60,7 +60,7 @@ public:
 			scoreUp = false;
 		}
 
-		if (life <= 0) {
+		if (life <= 0 && false) {
 			TMsgPlayerDead msg;
 			CEntity* msg_target = h_luaManager;
 			msg_target->sendMsg(msg);

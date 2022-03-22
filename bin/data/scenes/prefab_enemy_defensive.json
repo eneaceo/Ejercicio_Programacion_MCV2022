@@ -15,18 +15,29 @@
       },
       "render": [
         {
-          "mesh": "data/skeletons/exo/exo_suit.mesh",
-          "mat": "data/skeletons/exo/suit.mat"
+          "mesh": "data/skeletons/defensive_enemy/defensive_enemy_body.mesh",
+          "mat": "data/skeletons/defensive_enemy/defensive_enemy.mat"
         },
 
         {
-          "mesh": "data/skeletons/exo/exo_body.mesh",
-          "mat": "data/skeletons/exo/body.mat"
+          "mesh": "data/skeletons/defensive_enemy/defensive_enemy_helmet.mesh",
+          "mat": "data/skeletons/defensive_enemy/defensive_enemy.mat"
+        },
+
+        {
+          "mesh": "data/skeletons/defensive_enemy/shield.mesh",
+          "mat": "data/skeletons/defensive_enemy/defensive_enemy.mat"
+        },
+
+        {
+          "mesh": "data/skeletons/defensive_enemy/sword.mesh",
+          "mat": "data/skeletons/defensive_enemy/defensive_enemy.mat"
         }
+
       ],
       "abs_aabb": {},
       "armature": {
-        "src": "data/skeletons/exo/exo.skeleton"
+        "src": "data/skeletons/defensive_enemy/defensive_enemy.skeleton"
       }
     }
   }

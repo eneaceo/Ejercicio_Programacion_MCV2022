@@ -1,14 +1,28 @@
 {
-  "name": "mutant",
+  "name": "player",
   "anims": [
     { "name": "idle" },
-    { "name": "walk" },
-    { "name": "run" }
+    { "name": "idle_2" },
+    { "name": "idle_3" },
+    { "name": "impact" },
+    { "name": "impact_2" },
+    { "name": "impact_3" },
+    { "name": "dying" },
+    { "name": "walk_forward" },
+    { "name": "walk_back" },
+    { "name": "walk_left" },
+    { "name": "walk_right" },
+    { "name": "punch_1" },
+    { "name": "punch_2" },
+    { "name": "punch_3" },
+    { "name": "punch_4" },
+    { "name": "punch_5" },
+    { "name": "kick_1" },
+    { "name": "kick_2" }
   ],
   "meshes": [
     "player"
   ],
-  "ragdoll": [],
   "bone_ids_to_debug": [ ],
   "lookat_corrections": [  ]
 }

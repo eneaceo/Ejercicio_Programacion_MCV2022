@@ -1,5 +1,5 @@
 {
-  "albedo": "data/skeletons/mutant/Mutant_diffuse.dds",
-  "normal": "data/skeletons/mutant/Mutant_normal.dds",
+  "albedo": "data/skeletons/player/player_diffuse.dds",
+  "normal": "data/skeletons/player/player_normal.dds",
   "uses_skin" : true
 }

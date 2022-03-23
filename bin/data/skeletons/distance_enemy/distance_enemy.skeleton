@@ -19,8 +19,7 @@
     "distance_enemy_body",
     "distance_enemy_clothes",
     "bow",
-    "distance_enemy_eyes",
-    "distance_enemy_eyelashes"
+    "distance_enemy_eyes"
   ],
   "bone_ids_to_debug": [ ],
   "lookat_corrections": [ ]

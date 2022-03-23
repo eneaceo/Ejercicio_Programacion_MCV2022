@@ -25,11 +25,6 @@
         },
 
         {
-          "mesh": "data/skeletons/distance_enemy/distance_enemy_eyelashes.mesh",
-          "mat": "data/skeletons/distance_enemy/distance_enemy_body.mat"
-        },
-
-        {
           "mesh": "data/skeletons/distance_enemy/distance_enemy_eyes.mesh",
           "mat": "data/skeletons/distance_enemy/distance_enemy_body.mat"
         },

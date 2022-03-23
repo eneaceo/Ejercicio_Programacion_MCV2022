@@ -1,0 +1,14 @@
+{
+  "name": "mutant",
+  "anims": [
+    { "name": "idle" },
+    { "name": "walk" },
+    { "name": "run" }
+  ],
+  "meshes": [
+    "player"
+  ],
+  "ragdoll": [],
+  "bone_ids_to_debug": [ ],
+  "lookat_corrections": [  ]
+}

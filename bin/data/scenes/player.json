@@ -19,20 +19,14 @@
       },
       "render": [
         {
-          "mesh": "data/skeletons/mutant/mutant.mesh",
-          "mat": "data/skeletons/mutant/mutant.mat"
+          "mesh": "data/skeletons/player/player.mesh",
+          "mat": "data/skeletons/player/player.mat"
         }
       ],
       "abs_aabb": {},
       "tags": [ "player" ],
       "armature": {
-        "src": "data/skeletons/mutant/mutant.skeleton"
-      },
-      "skel_lookat": {
-        "target_entity_name": "target_point"
-      },
-      "skel_ik": {
-        "bone_name" :  "Mutant:RightFoot"
+        "src": "data/skeletons/player/player.skeleton"
       }
     }
   },

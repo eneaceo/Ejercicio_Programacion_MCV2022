@@ -1,13 +1,27 @@
 {
   "name": "defensive_enemy",
   "anims": [
-    { "name": "idle" }
+    { "name": "idle" },
+    { "name": "impact" },
+    { "name": "impact_block" },
+    { "name": "dying" },
+    { "name": "block" },
+    { "name": "taunt_1" },
+    { "name": "taunt_2" },
+    { "name": "walk_forward" },
+    { "name": "walk_back" },
+    { "name": "walk_left" },
+    { "name": "walk_right" },
+    { "name": "attack_1" },
+    { "name": "attack_2" },
+    { "name": "attack_3" }
   ],
   "meshes": [
     "defensive_enemy_body",
-    "defensive_enemy_helmet",
-    "sword",
-    "shield"
+    "defensive_enemy_bottom",
+    "defensive_enemy_boots",
+    "defensive_enemy_eyes",
+    "axe"
   ],
   "bone_ids_to_debug": [ ],
   "lookat_corrections": [ ]

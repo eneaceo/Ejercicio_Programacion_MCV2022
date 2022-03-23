@@ -1,5 +1,0 @@
-{
-  "albedo": "data/skeletons/maw/maw_diffuse.dds",
-  "pipeline": "objs_skin.pipeline",
-  "uses_skin" : true
-}

@@ -1,5 +1,0 @@
-{
-  "albedo": "data/skeletons/exo/EXO_diffuse.dds",
-  "normal": "data/skeletons/exo/EXO_normal.dds",
-  "uses_skin" : true
-}

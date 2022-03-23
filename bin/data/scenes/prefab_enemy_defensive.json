@@ -16,23 +16,29 @@
       "render": [
         {
           "mesh": "data/skeletons/defensive_enemy/defensive_enemy_body.mesh",
-          "mat": "data/skeletons/defensive_enemy/defensive_enemy.mat"
+          "mat": "data/skeletons/defensive_enemy/defensive_enemy_body.mat"
         },
 
         {
-          "mesh": "data/skeletons/defensive_enemy/defensive_enemy_helmet.mesh",
-          "mat": "data/skeletons/defensive_enemy/defensive_enemy.mat"
+          "mesh": "data/skeletons/defensive_enemy/defensive_enemy_bottom.mesh",
+          "mat": "data/skeletons/defensive_enemy/defensive_enemy_bottom.mat"
         },
 
         {
-          "mesh": "data/skeletons/defensive_enemy/shield.mesh",
-          "mat": "data/skeletons/defensive_enemy/defensive_enemy.mat"
+          "mesh": "data/skeletons/defensive_enemy/defensive_enemy_boots.mesh",
+          "mat": "data/skeletons/defensive_enemy/defensive_enemy_boots.mat"
         },
 
         {
-          "mesh": "data/skeletons/defensive_enemy/sword.mesh",
-          "mat": "data/skeletons/defensive_enemy/defensive_enemy.mat"
+          "mesh": "data/skeletons/defensive_enemy/defensive_enemy_eyes.mesh",
+          "mat": "data/skeletons/defensive_enemy/defensive_enemy_body.mat"
+        },
+
+        {
+          "mesh": "data/skeletons/defensive_enemy/axe.mesh",
+          "mat": "data/skeletons/defensive_enemy/axe.mat"
         }
+
 
       ],
       "abs_aabb": {},

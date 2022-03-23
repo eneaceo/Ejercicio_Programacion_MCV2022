@@ -1,0 +1,5 @@
+{
+  "albedo": "data/skeletons/defensive_enemy/defensive_enemy_body_diffuse.dds",
+  "normal": "data/skeletons/defensive_enemy/defensive_enemy_body_normal.dds",
+  "uses_skin" : true
+}

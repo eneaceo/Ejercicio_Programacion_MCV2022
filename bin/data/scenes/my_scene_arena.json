@@ -5,7 +5,7 @@
     "abs_aabb": {},
     "transform": {
       "pos": "0.1 0.0 0.05",
-      "scale": "3 3 3",
+      "scale": "10 1 10",
       "rot": "0.0 0.0 0.0 -1.0"
     },
     "render": [
@@ -28,8 +28,8 @@
       "abs_aabb": {},
       "local_aabb": {},
       "transform": {
-        "pos": "-5 0.0 -5",
-        "scale": "1.0 1.0 1.0",
+        "pos": "-10 0.0 -10",
+        "scale": "2.0 2.0 2.0",
         "rot": "0.0 0.0 0.0 -1.0"
       },
       "render": [
@@ -38,7 +38,12 @@
           "mat": "data/textures/rustediron2/rustediron2.mat",
           "mesh_group": 0
         }
-      ]
+      ],
+      "collider": {
+        "shape" : "capsule",
+        "radio" : 1,
+        "half_size" : 1
+      }
     }
   },
   {
@@ -47,8 +52,8 @@
       "abs_aabb": {},
       "local_aabb": {},
       "transform": {
-        "pos": "-5 0.0 5",
-        "scale": "1.0 1.0 1.0",
+        "pos": "-10 0.0 10",
+        "scale": "2.0 2.0 2.0",
         "rot": "0.0 0.0 0.0 -1.0"
       },
       "render": [
@@ -57,7 +62,12 @@
           "mat": "data/textures/rustediron2/rustediron2.mat",
           "mesh_group": 0
         }
-      ]
+      ],
+      "collider": {
+        "shape" : "capsule",
+        "radio" : 1,
+        "half_size" : 1
+      }
     }
   },
   {
@@ -66,8 +76,8 @@
       "abs_aabb": {},
       "local_aabb": {},
       "transform": {
-        "pos": "5 0.0 5",
-        "scale": "1.0 1.0 1.0",
+        "pos": "10 0.0 10",
+        "scale": "2.0 2.0 2.0",
         "rot": "0.0 0.0 0.0 -1.0"
       },
       "render": [
@@ -76,7 +86,12 @@
           "mat": "data/textures/rustediron2/rustediron2.mat",
           "mesh_group": 0
         }
-      ]
+      ],
+      "collider": {
+        "shape" : "capsule",
+        "radio" : 1,
+        "half_size" : 1
+      }
     }
   },
   {
@@ -85,8 +100,8 @@
       "abs_aabb": {},
       "local_aabb": {},
       "transform": {
-        "pos": "5 0.0 -5",
-        "scale": "1.0 1.0 1.0",
+        "pos": "10 0.0 -10",
+        "scale": "2.0 2.0 2.0",
         "rot": "0.0 0.0 0.0 -1.0"
       },
       "render": [
@@ -95,7 +110,12 @@
           "mat": "data/textures/rustediron2/rustediron2.mat",
           "mesh_group": 0
         }
-      ]
+      ],
+      "collider": {
+        "shape" : "capsule",
+        "radio" : 1,
+        "half_size" : 1
+      }
     }
   }
 ]

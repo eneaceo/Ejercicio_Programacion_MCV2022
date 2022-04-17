@@ -4,7 +4,7 @@ lm = LogicManager();
 
 function OnGameStart()
 lm:SetPlayerMaxLife(150);
-lm:SetPlayerLife(10);
+lm:SetPlayerLife(150);
 lm:SetPotionHealing(50);
 lm:SetPlayerShootHitDamage(20);
 lm:SetPlayerHitDamage(20);
@@ -12,10 +12,10 @@ lm:setSpawnPosition(0,0,10);
 lm:setSpawnState(true);
 playerLife = lm:GetPlayerLife();
 playerMaxLife = lm:GetPlayerMaxLife();
-
 end
 
 function NextWave()
+lm:setSpawnState(true);
 lm:SpawnRandomEnemies(3);
 end
 

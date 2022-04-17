@@ -2,7 +2,7 @@
 #include "bt_playerController.h"
 
 
-void bt_playerController::Init(CHandle h_my_transform, CHandle h_collider, float speed) {
+void bt_playerController::Init(CHandle h_my_transform, CHandle h_collider, float speed, CHandle myh_skel) {
 
 	CreateRootNode("root", SELECTOR);
 	//Cinematic movement
@@ -18,6 +18,7 @@ void bt_playerController::Init(CHandle h_my_transform, CHandle h_collider, float
 	this->h_my_transform = h_my_transform;
 	this->speed = speed;
 	this->h_collider = h_collider;
+	h_skel = myh_skel;
 }
 
 void bt_playerController::updateTime(float dt) {
@@ -42,12 +43,16 @@ int bt_playerController::TaskMovement() {
 
 	TCompTransform* t = h_my_transform;
 	VEC3 new_move;
+	TCompSkeleton* my_skel = h_skel;
 
-	if (isPressed('W'))
+	if (isPressed('W')) {
 		new_move = t->getForward() * speed * dt;
-	if (isPressed('S'))
+		my_skel->model->getMixer()->executeAction(7, 0.0f, 0.02f, 1.0f, false, false);
+		}
+	if (isPressed('S')) {
 		new_move = -t->getForward() * speed * dt;
-
+		my_skel->model->getMixer()->executeAction(8, 0.0f, 0.02f, 1.0f, false, false);
+	}
 	t->setPosition(t->getPosition() + new_move);
 
 
@@ -79,22 +84,48 @@ int bt_playerController::TaskMovement() {
 	if (isPressed('A')) {
 		QUAT delta_rotation = QUAT::CreateFromAxisAngle(VEC3(0, 1, 0), rotation_speed * dt);
 		t->setRotation(t->getRotation() * delta_rotation);
+		my_skel->model->getMixer()->executeAction(9, 0.0f, 0.02f, 1.0f, false, false);
 	}
 	if (isPressed('D')) {
 		QUAT delta_rotation = QUAT::CreateFromAxisAngle(VEC3(0, 1, 0), -rotation_speed * dt);
 		t->setRotation(t->getRotation() * delta_rotation);
+		my_skel->model->getMixer()->executeAction(10, 0.0f, 0.02f, 1.0f, false, false);
 	}
+
 
 	return SUCCESS;
 }
 
 int bt_playerController::TaskAttack() {
 
-	if (timer < 0.5f) {
+	if (timer == 0) {
+		TCompSkeleton* my_skel = h_skel;
+		auto mixer = my_skel->model->getMixer();
+		for (auto a : mixer->getAnimationActionList()) {
+			auto core = (CGameCoreSkeleton*)my_skel->model->getCoreModel();
+			int id = core->getCoreAnimationId(a->getCoreAnimation()->getName());
+			if (a->getState() == CalAnimation::State::STATE_STOPPED)
+				mixer->removeAction(id, 0.f);
+			else
+				a->remove(0.2f);
+		}
+		my_skel->model->getMixer()->executeAction(11, 0.0f, 0.0f, 1.0f, false, false);
+	}
+	if (timer < 1.0f) {
 		timer = dt + timer;
 		return IN_PROGRESS;
 	}
 	else {
+		TCompTransform* my_transform = h_my_transform;
+		VEC3 my_pos = my_transform->getPosition();
+		VEC3 dir_to_enemy = (my_pos);
+		dir_to_enemy.Normalize();
+		dir_to_enemy *= 10.0f;
+		float yaw = vectorToYaw(dir_to_enemy);
+		MAT44 mtx = MAT44::CreateFromAxisAngle(VEC3(0, 1, 0), yaw) * MAT44::CreateTranslation(my_pos);
+		TEntityParseContext ctx;
+		ctx.root_transform.fromMatrix(mtx);
+		parseScene("data/prefabs/attackHitbox.json", ctx);
 		timer = 0;
 		return SUCCESS;
 	}

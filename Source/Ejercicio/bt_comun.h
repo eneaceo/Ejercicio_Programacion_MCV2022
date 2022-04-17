@@ -29,6 +29,12 @@ class bt_comun {
 	bool impact;
 	float damage = 0;
 
+	bool dying = false;
+	bool animEnded = false;
+	bool playingAnim = false;
+	int movementDir = 0;
+	bool anim = false;
+
 public:
 
 	void Init(CHandle, CHandle, CHandle, CHandle);
@@ -53,6 +59,18 @@ public:
 	void changeAttacker();
 	void msgDying();
 	void msgDestroyMe();
+	void msgAnimation(int, float, float);
+	void msgAnimationMovement(int, float, float);
+	void setAnimEnded(bool);
+	bool getAnimEnded();
+	void setPLayingAnim(bool);
+	bool getPlayingAnim();
+	void setMovementDir(int);
+	int getMovementDir();
+	void setDying();
+	bool getDying();
+	void animAux(bool);
+	bool getAnimAux();
 
 	VEC3 getMyPosition();
 	VEC3 getMyForward();
@@ -68,6 +86,7 @@ public:
 	void setState(std::string);
 
 	void shoot();
+	void attack();
 
 };
 

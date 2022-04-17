@@ -30,6 +30,17 @@ class TCompGameStats : public TCompBase {
 	bool defensePowerUp = false;
 	bool shootHit = false;
 	
+	bool respawnPotion = false;
+	float timerRespawnPotion = 0.0f;
+
+	bool respawnPowerUp = false;
+	bool powerUpActive = false;
+	float timerPowerUp = 0.0f;
+	float timerPowerUpTime = 30.0f;
+	float timerRespawnPowerUp = 0.0f;
+
+	float timerRespawn = 20.0f;
+
 	//Score
 	int score = 0;
 	bool scoreUp = false;
@@ -45,22 +56,57 @@ public:
 			life += potionHeal;
 			if (life > maxLife) life = maxLife;
 			potion = false;
+			respawnPotion = true;
 		}
+
+		if (respawnPotion) {
+			timerRespawnPotion += dt;
+		}
+		if (timerRespawnPotion > timerRespawn) {
+			TEntityParseContext ctx;
+			parseScene("data/scenes/potion.json", ctx);
+			respawnPotion = false;
+			timerRespawnPotion = 0.0f;
+		}
+
 		if (shootHit) {
 			life -= shootHitDamage;
 			shootHit = false;
 		}
+		
 		if (defensePowerUp) {
 			hitDamage = hitDamage / 2;
 			shootHitDamage = shootHitDamage / 2;
 			defensePowerUp = false;
+			powerUpActive = true;
 		}
+		if (powerUpActive) {
+			timerPowerUp += dt;
+		}
+		if (timerPowerUp > timerPowerUpTime) {
+			hitDamage = hitDamage * 2;
+			shootHitDamage = shootHitDamage * 2;
+			timerPowerUp = 0.0f;
+			powerUpActive = false;
+			respawnPowerUp = true;
+		}
+
+		if (respawnPowerUp) {
+			timerRespawnPowerUp += dt;
+		}
+		if (timerRespawnPowerUp > timerRespawn) {
+			TEntityParseContext ctx;
+			parseScene("data/scenes/powerup_defense.json", ctx);
+			respawnPowerUp = false;
+			timerRespawnPowerUp = 0.0f;
+		}
+
 		if (scoreUp) {
 			score += 100;
 			scoreUp = false;
 		}
 
-		if (life <= 0 && false) {
+		if (life <= 0) {
 			TMsgPlayerDead msg;
 			CEntity* msg_target = h_luaManager;
 			msg_target->sendMsg(msg);

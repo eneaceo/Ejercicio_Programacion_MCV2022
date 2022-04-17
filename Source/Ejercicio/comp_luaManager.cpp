@@ -9,7 +9,6 @@
 
 #include "../Tools/SLB/include/SLB/SLB.hpp"
 
-//BUSCAR SOLUCION A ESTO!!!!
 CHandle h_gamestats;
 CHandle h_player;
 CHandle h_spawner;
@@ -178,7 +177,6 @@ public:
 		SLB::Script s(&m);
 
 		try {
-			//BUSCAR SOLUCION A ESTO!!!!!!!
 			s.doFile("../Source/test.lua");
 		} catch (std::exception x) {
 			printf("error %s\n", x.what());
@@ -217,7 +215,6 @@ public:
 		SLB::Script s(&m);
 
 		try {
-			//BUSCAR SOLUCION A ESTO!!!!!!!
 			s.doFile("../Source/test.lua");
 		} catch (std::exception x) {
 			printf("error %s\n", x.what());
@@ -235,7 +232,6 @@ public:
 		SLB::Script s(&m);
 
 		try {
-			//BUSCAR SOLUCION A ESTO!!!!!!!
 			s.doFile("../Source/test.lua");
 		} catch (std::exception x) {
 			printf("error %s\n", x.what());

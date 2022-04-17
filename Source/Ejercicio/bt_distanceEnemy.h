@@ -22,13 +22,16 @@ class bt_distanceEnemy:public bt, public bt_comun {
 		int DecoratorCombat();
 		int DecoratorChase();
 		int DecoratorShoot();
+		int DecoratorAttack();
 		int DecoratorMoveBack();
 		int DecoratorMoveBackFar();
 		int DecoratorShootFar();
 		int DecoratorMantainDistance();
+		int DecoratorTaunt();
 
 		//bt tasks
 		int TaskIdle();
+		int TaskCombatIdle();
 		int TaskProcessImpact();
 		int TaskDie();
 		int TaskAttacker();

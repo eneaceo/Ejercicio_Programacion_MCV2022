@@ -1,6 +1,22 @@
 #include "mcv_platform.h"
 #include "bt_agresiveEnemy.h"
 
+    //{ "name": "idle" },
+    //{ "name": "idle_2" },
+    //{ "name": "impact" },
+    //{ "name": "dying" },
+    //{ "name": "taunt" },
+    //{ "name": "run_forward" },
+    //{ "name": "run_backwards" },
+    //{ "name": "walk_left" },
+    //{ "name": "walk_right" },
+    //{ "name": "punch_1" },
+    //{ "name": "punch_2" },
+    //{ "name": "punch_3" },
+    //{ "name": "punch_4" },
+    //{ "name": "kick_1" },
+    //{ "name": "kick_2" },
+    //{ "name": "special" }
 
 void bt_agresiveEnemy::InitTree() {
 
@@ -90,15 +106,26 @@ int bt_agresiveEnemy::TaskIdle() {
 int bt_agresiveEnemy::TaskProcessImpact() {
     setState("Process Impact");
     if (getDamage() > 20 || rand() % 5 == 0) changeAttacker();
-    resetTimer();
+    msgAnimation(2, 0.0f, 0.2f);
     return SUCCESS;
 }
 
 int bt_agresiveEnemy::TaskDie() {
     setState("Dying");
-    msgDying();
-    msgDestroyMe();
-    return SUCCESS;
+
+    if (!getDying()) {
+        setDying();
+        msgAnimation(3, 0.0f, 0.0f);
+    }
+
+    if (!getAnimEnded()) {
+        return IN_PROGRESS;
+    }
+    else {
+        msgDying();
+        msgDestroyMe();
+        return SUCCESS;
+    }
 }
 
 int bt_agresiveEnemy::TaskAttacker() {
@@ -112,6 +139,10 @@ int bt_agresiveEnemy::TaskChase() {
     VEC3 enemy_position = getEnemyPosition();
     rotateToTarget(enemy_position);
     moveForward();
+    if (getMovementDir() != 1) {
+        msgAnimationMovement(5, 0.2f, 0.2f);
+        setMovementDir(1);
+    }
     return SUCCESS;
 }
 
@@ -119,13 +150,14 @@ int bt_agresiveEnemy::TaskAttack1() {
     setState("Attack 1");
     VEC3 enemy_position = getEnemyPosition();
     rotateToTarget(enemy_position);
-    float time = getTimer();
-    if (time < 0.5f) {
-        setTimer(getDeltaTime() + time);
+
+    if (!getPlayingAnim()) msgAnimation(9, 0.0f, 0.2f);
+
+    if (!getAnimEnded()) {
         return IN_PROGRESS;
     }
     else {
-        resetTimer();
+        attack();
         return SUCCESS;
     }
 }
@@ -134,13 +166,14 @@ int bt_agresiveEnemy::TaskAttack2() {
     setState("Attack 2");
     VEC3 enemy_position = getEnemyPosition();
     rotateToTarget(enemy_position);
-    float time = getTimer();
-    if (time < 0.5f) {
-        setTimer(getDeltaTime() + time);
+
+    if (!getPlayingAnim()) msgAnimation(13, 0.0f, 0.2f);
+
+    if (!getAnimEnded()) {
         return IN_PROGRESS;
     }
     else {
-        resetTimer();
+        attack();
         return SUCCESS;
     }
 }
@@ -149,13 +182,14 @@ int bt_agresiveEnemy::TaskCombo1() {
     setState("Combo 1");
     VEC3 enemy_position = getEnemyPosition();
     rotateToTarget(enemy_position);
-    float time = getTimer();
-    if (time < 0.5f) {
-        setTimer(getDeltaTime() + time);
+
+    if (!getPlayingAnim()) msgAnimation(14, 0.0f, 0.2f);
+
+    if (!getAnimEnded()) {
         return IN_PROGRESS;
     }
     else {
-        resetTimer();
+        attack();
         return SUCCESS;
     }
 }
@@ -164,13 +198,14 @@ int bt_agresiveEnemy::TaskCombo2() {
     setState("Combo 2");
     VEC3 enemy_position = getEnemyPosition();
     rotateToTarget(enemy_position);
-    float time = getTimer();
-    if (time < 0.5f) {
-        setTimer(getDeltaTime() + time);
+
+    if (!getPlayingAnim()) msgAnimation(15, 0.0f, 0.2f);
+
+    if (!getAnimEnded()) {
         return IN_PROGRESS;
     }
     else {
-        resetTimer();
+        attack();
         return SUCCESS;
     }
 }
@@ -184,11 +219,16 @@ int bt_agresiveEnemy::TaskMantainDistance() {
     rotateToTarget(enemy_position);
     rotateAroundRight(enemy_position);
 
-    float dist = VEC3::Distance(my_position, enemy_position);
-    if (dist > 5) moveForward();
-    else moveBackwards();
+    if (getMovementDir() != 2) {
+        msgAnimationMovement(8, 0.2f, 0.2f);
+        setMovementDir(2);
+    }
 
-    if (rand() % 10 == 0) return IN_PROGRESS;
+    //float dist = VEC3::Distance(my_position, enemy_position);
+    //if (dist > 5) moveForward();
+    //else moveBackwards();
+
+    //if (rand() % 10 == 0) return IN_PROGRESS;
     return SUCCESS;
 }
 
@@ -196,13 +236,17 @@ int bt_agresiveEnemy::TaskTaunt() {
     setState("Taunt");
     VEC3 enemy_position = getEnemyPosition();
     rotateToTarget(enemy_position);
-    float time = getTimer();
-    if (time < 0.5f) {
-        setTimer(getDeltaTime() + time);
+
+    if (!getAnimAux()) {
+        animAux(true);
+        msgAnimation(4, 0.0f, 0.0f);
+    }
+
+    if (!getAnimEnded()) {
         return IN_PROGRESS;
     }
     else {
-        resetTimer();
+        animAux(false);
         return SUCCESS;
     }
 }

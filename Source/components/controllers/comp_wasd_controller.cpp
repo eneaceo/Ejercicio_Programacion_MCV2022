@@ -8,7 +8,14 @@
 #include "entity/entity_parser.h"
 #include "input/input_module.h"
 #include "components/messages.h"
-
+#include "skeleton/comp_skeleton.h"
+#include "cal3d/cal3d.h"
+#include "skeleton/game_core_skeleton.h"
+#include "render/draw_primitives.h"
+#include "components/common/comp_transform.h"
+#include "components/common/comp_aabb.h"
+#include "skeleton/comp_skeleton_ik.h"
+#include "skeleton/comp_skel_lookat.h"
 #include "Ejercicio/bt_playerController.h"
 
 struct TCompWASDController : public TCompBase {
@@ -25,7 +32,8 @@ struct TCompWASDController : public TCompBase {
   void onEntityCreated() {
     h_my_transform = get<TCompTransform>();
 	CHandle h_collider = get<TCompCollider>();
-	bt.Init(h_my_transform,h_collider, speed);
+	CHandle myh_skel = get<TCompSkeleton>();
+	bt.Init(h_my_transform,h_collider, speed, myh_skel);
 
   }
 

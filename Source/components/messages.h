@@ -88,6 +88,11 @@ struct TMsgShoot {
     MAT44 mtx;
 };
 
+struct TMsgAttack {
+    DECL_MSG_ID();
+    MAT44 mtx;
+};
+
 struct TMsgPotion {
     DECL_MSG_ID();
 }; 
@@ -168,4 +173,18 @@ struct TMsgMove {
 struct TMsgSpawnState {
     DECL_MSG_ID();
     bool state;
+};
+
+struct TMsgAnimation {
+    DECL_MSG_ID();
+    int animNum;
+    float in_delay;
+    float out_delay;
+};
+
+struct TMsgAnimationMovement {
+    DECL_MSG_ID();
+    int animNum;
+    float in_delay;
+    float out_delay;
 };

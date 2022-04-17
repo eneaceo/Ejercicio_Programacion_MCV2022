@@ -7,6 +7,14 @@
 #include "render/draw_primitives.h"
 #include "entity/entity_parser.h"
 #include "components/messages.h"
+#include "skeleton/comp_skeleton.h"
+#include "cal3d/cal3d.h"
+#include "skeleton/game_core_skeleton.h"
+#include "render/draw_primitives.h"
+#include "components/common/comp_transform.h"
+#include "components/common/comp_aabb.h"
+#include "skeleton/comp_skeleton_ik.h"
+#include "skeleton/comp_skel_lookat.h"
 
 #include "bt_distanceEnemy.h"
 
@@ -23,6 +31,12 @@ class TCompBTdistance : public TCompBase {
 	CHandle h_target;
 	std::string btmanager_name;
 	CHandle h_btmanager;
+
+	CHandle myh_skel;
+	float animDuration = 0.0f;
+	float animTime = 0.0f;
+	bool playingAnim = false;
+	bool resetAnim = false;
 
 	//Stats
 	float speed;
@@ -55,6 +69,7 @@ public:
 		msg.me = myh_entity;
 		msg_target->sendMsg(msg);
 
+		myh_skel = get<TCompSkeleton>();
 	}
 
 	void load(const json& j, TEntityParseContext& ctx) {
@@ -79,6 +94,9 @@ public:
 		if (ImGui::SmallButton("Impact")) {
 			bt.setImpact(true);
 		}
+
+		ImGui::Text("Anim Duration: %f", animDuration);
+		ImGui::Text("Anim Time: %f", animTime);
 	}
 
 	void renderDebug() {
@@ -96,12 +114,33 @@ public:
 		bt.updateTime(delta_time);
 		bt.updateAttacker(attacker);
 
-		if (bt.getImpact()) {
+		if (bt.getImpact() || bt.getLife() <= 0) {
 			bt.setCurrent(bt.findNode("root"));
+		}
+
+		if (playingAnim) {
+			animTime += delta_time;
+		}
+
+		if (animTime > animDuration) {
+			bt.setAnimEnded(true);
+			resetAnim = true;
 		}
 
 		bt.recalc();
 		state = bt.getState();
+
+		//dbg("State is: %s\n", state.c_str());
+
+		if (resetAnim) {
+			animDuration = 0.0f;
+			animTime = 0.0f;
+			playingAnim = false;
+			bt.setPLayingAnim(false);
+			bt.setAnimEnded(false);
+			bt.setMovementDir(0);
+			resetAnim = false;
+		}
 
 		bt.setImpact(false);
 	}
@@ -111,6 +150,9 @@ public:
 		DECL_MSG(TCompBTdistance, TMsgAttacker, whoIsAttacker);
 		DECL_MSG(TCompBTdistance, TMsgDestroyMe, destroyMe);
 		DECL_MSG(TCompBTdistance, TMsgShoot, shoot);
+		DECL_MSG(TCompBTdistance, TMsgAttack, attack);
+		DECL_MSG(TCompBTdistance, TMsgAnimation, playAnimation);
+		DECL_MSG(TCompBTdistance, TMsgAnimationMovement, playAnimationMovement);
 	}
 
 	void whoIsAttacker(const TMsgAttacker& msg) {
@@ -125,6 +167,71 @@ public:
 		TEntityParseContext ctx;
 		ctx.root_transform.fromMatrix(msg.mtx);
 		parseScene("data/prefabs/bullet.json", ctx);
+	}
+
+	void attack(const TMsgAttack& msg) {
+		TEntityParseContext ctx;
+		ctx.root_transform.fromMatrix(msg.mtx);
+		parseScene("data/prefabs/attackHitbox.json", ctx);
+	}
+
+	void playAnimation(const TMsgAnimation& msg) {
+
+		bool auto_lock = false;
+		bool root_motion = false;
+
+		TCompSkeleton* my_skel = myh_skel;
+		auto mixer = my_skel->model->getMixer();
+
+		if (msg.animNum == 2 || msg.animNum == 3) {
+			for (auto a : mixer->getAnimationActionList()) {
+				auto core = (CGameCoreSkeleton*)my_skel->model->getCoreModel();
+				int id = core->getCoreAnimationId(a->getCoreAnimation()->getName());
+				if (a->getState() == CalAnimation::State::STATE_STOPPED)
+					mixer->removeAction(id, 0.f);
+				else
+					a->remove(msg.out_delay);
+			}
+		}
+
+		my_skel->model->getMixer()->executeAction(msg.animNum, msg.in_delay, msg.out_delay, 1.0f, auto_lock, root_motion);
+
+		for (auto a : mixer->getAnimationActionList()) {
+			animDuration = a->getCoreAnimation()->getDuration();
+		}
+
+		playingAnim = true;
+		bt.setPLayingAnim(true);
+	}
+
+	void playAnimationMovement(const TMsgAnimationMovement& msg) {
+
+		bool auto_lock = false;
+		bool root_motion = false;
+
+		TCompSkeleton* my_skel = myh_skel;
+		auto mixer = my_skel->model->getMixer();
+
+		
+		for (auto a : mixer->getAnimationActionList()) {
+			auto core = (CGameCoreSkeleton*)my_skel->model->getCoreModel();
+			int id = core->getCoreAnimationId(a->getCoreAnimation()->getName());
+			if (a->getState() == CalAnimation::State::STATE_STOPPED)
+				mixer->removeAction(id, 0.f);
+			else
+				a->remove(msg.out_delay);
+		}
+		
+
+		my_skel->model->getMixer()->executeAction(msg.animNum, msg.in_delay, msg.out_delay, 1.0f, auto_lock, root_motion);
+
+		for (auto a : mixer->getAnimationActionList()) {
+			animDuration = a->getCoreAnimation()->getDuration();
+		}
+
+		playingAnim = true;
+		bt.setPLayingAnim(true);
+
 	}
 
 };

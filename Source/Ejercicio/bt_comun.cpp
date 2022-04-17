@@ -96,6 +96,64 @@ void bt_comun::msgDestroyMe() {
     msg_target->sendMsg(msg);
 }
 
+void bt_comun::msgAnimation(int animNum, float in_delay, float out_delay) {
+    TMsgAnimation msg;
+    CEntity* msg_target = myh_entity;
+    msg.animNum = animNum;
+    msg.in_delay = in_delay;
+    msg.out_delay = out_delay;
+    msg_target->sendMsg(msg);
+}
+
+void bt_comun::msgAnimationMovement(int animNum, float in_delay, float out_delay) {
+    TMsgAnimationMovement msg;
+    CEntity* msg_target = myh_entity;
+    msg.animNum = animNum;
+    msg.in_delay = in_delay;
+    msg.out_delay = out_delay;
+    msg_target->sendMsg(msg);
+}
+
+void bt_comun::setAnimEnded(bool anim) {
+    animEnded = anim;
+}
+
+bool bt_comun::getAnimEnded() {
+    return animEnded;
+}
+
+void bt_comun::setPLayingAnim(bool playing) {
+    playingAnim = playing;
+}
+
+bool bt_comun::getPlayingAnim() {
+    return playingAnim;
+}
+
+void bt_comun::setMovementDir(int dir) {
+    movementDir = dir;
+}
+
+int bt_comun::getMovementDir() {
+    return movementDir;
+}
+
+void bt_comun::setDying() {
+    dying = true;
+}
+
+bool bt_comun::getDying() {
+    return dying;
+}
+
+void bt_comun::animAux(bool aux) {
+    anim = aux;
+}
+
+bool bt_comun::getAnimAux() {
+    return anim;
+}
+
 //UPDATES
 
 void bt_comun::updateTime(float delta_time) {
@@ -220,6 +278,20 @@ void bt_comun::shoot() {
     float yaw = vectorToYaw(dir_to_enemy);
     MAT44 mtx = MAT44::CreateFromAxisAngle(VEC3(0, 1, 0), yaw) * MAT44::CreateTranslation(my_pos);
     TMsgShoot msg;
+    CEntity* msg_target = myh_entity;
+    msg.mtx = mtx;
+    msg_target->sendMsg(msg);
+}
+
+void bt_comun::attack() {
+    TCompTransform* my_transform = myh_transform;
+    VEC3 my_pos = my_transform->getPosition();
+    VEC3 dir_to_enemy = (getEnemyPosition() - my_pos);
+    dir_to_enemy.Normalize();
+    dir_to_enemy *= 10.0f;
+    float yaw = vectorToYaw(dir_to_enemy);
+    MAT44 mtx = MAT44::CreateFromAxisAngle(VEC3(0, 1, 0), yaw) * MAT44::CreateTranslation(my_pos);
+    TMsgAttack msg;
     CEntity* msg_target = myh_entity;
     msg.mtx = mtx;
     msg_target->sendMsg(msg);

@@ -105,6 +105,16 @@ struct TMsgShootHit {
     DECL_MSG_ID();
 };
 
+struct TMsgShootHitPlayer {
+    DECL_MSG_ID();
+    VEC3 pos;
+};
+
+struct TMsgattacked {
+    DECL_MSG_ID();
+    VEC3 pos;
+};
+
 struct TMsgKill {
     DECL_MSG_ID();
 };

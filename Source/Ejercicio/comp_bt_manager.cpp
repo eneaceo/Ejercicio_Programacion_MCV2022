@@ -28,6 +28,9 @@ class TCompBTmanager : public TCompBase {
 	std::vector<CHandle> whoIsEngaged;
 	bool freeAttackerSlot = false;
 
+	bool attacked = false;
+	VEC3 attackPos;
+
 public:
 
 	void onEntityCreated() {
@@ -95,7 +98,16 @@ public:
 			enemiesEngaged = 0;
 			enemiesEngagedBefore = 0;
 			freeAttackerSlot = true;
-			killAll = false;
+		}
+
+		if (attacked) {
+			for (CHandle c : whoIsEngaged) {
+				TMsgattacked msg;
+				msg.pos = attackPos;
+				CEntity* msg_target = c;
+				msg_target->sendMsg(msg);
+			}
+			attacked = false;
 		}
 
 	}
@@ -107,6 +119,7 @@ public:
 		DECL_MSG(TCompBTmanager, TMsgChangeAttacker, changeAttacker);
 		DECL_MSG(TCompBTmanager, TMsgSetLuaManager, setLuaManager);
 		DECL_MSG(TCompBTmanager, TMsgDespawnEnemies, despawnEnemies);
+		DECL_MSG(TCompBTmanager, TMsgShootHitPlayer, ShootHit);
 	}
 
 	void registerEngage(const TMsgEngage& msg) {
@@ -138,6 +151,11 @@ public:
 
 	void despawnEnemies(const TMsgDespawnEnemies& msg) {
 		killAll = true;
+	}
+
+	void ShootHit(const TMsgShootHitPlayer& msg) {
+		attackPos = msg.pos;
+		attacked = true;
 	}
 
 };

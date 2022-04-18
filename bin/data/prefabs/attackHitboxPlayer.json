@@ -1,0 +1,24 @@
+[
+  {
+    "entity": {
+      "name": "attackHitbox",
+      "transform": {
+        "pos": "0 0 0",
+        "scale": 2
+      },
+      "auto_destroy": {
+        "time": 1.0
+      },
+      "bullet_controller_player": {
+        "speed": 12,
+        "btmanager_name" : "bt_manager"
+      },
+	  "collider" : {
+	  	"shape" : "sphere",
+		  "radius" : 1.5,
+		  "kinematic" : true,
+		  "trigger" : true
+	  }
+    }
+  }
+]

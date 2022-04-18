@@ -13,6 +13,12 @@
         "speed" : 2.0,
         "turn_speed" : 0.2
       },
+      "collider": {
+        "controller": 1,
+        "radius": 0.5,
+        "height": 1,
+		    "density" : 0 
+      },
       "render": [
         {
           "mesh": "data/skeletons/agresive_enemy/agresive_enemy_body.mesh",

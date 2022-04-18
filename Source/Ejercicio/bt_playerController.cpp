@@ -125,7 +125,7 @@ int bt_playerController::TaskAttack() {
 		MAT44 mtx = MAT44::CreateFromAxisAngle(VEC3(0, 1, 0), yaw) * MAT44::CreateTranslation(my_pos);
 		TEntityParseContext ctx;
 		ctx.root_transform.fromMatrix(mtx);
-		parseScene("data/prefabs/attackHitbox.json", ctx);
+		parseScene("data/prefabs/attackHitboxPlayer.json", ctx);
 		timer = 0;
 		return SUCCESS;
 	}

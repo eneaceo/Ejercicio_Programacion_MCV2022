@@ -38,6 +38,7 @@
     <ClCompile Include="components\controllers\comp_3rd_person_controller.cpp" />
     <ClCompile Include="components\controllers\comp_aim_to.cpp" />
     <ClCompile Include="components\controllers\comp_bullet_controller.cpp" />
+    <ClCompile Include="components\controllers\comp_bullet_controller_player.cpp" />
     <ClCompile Include="components\controllers\comp_curve_controller.cpp" />
     <ClCompile Include="components\controllers\comp_platform_controller.cpp" />
     <ClCompile Include="components\controllers\comp_rigid_animation_controller.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="components\common\comp_updates_physics.h" />
     <ClInclude Include="components\common\comp_video_player.h" />
     <ClInclude Include="components\controllers\comp_bullet_controller.h" />
+    <ClInclude Include="components\controllers\comp_bullet_controller_player.h" />
     <ClInclude Include="components\messages.h" />
     <ClInclude Include="components\postfx\comp_bloom.h" />
     <ClInclude Include="components\postfx\comp_blur.h" />

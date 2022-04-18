@@ -41,9 +41,11 @@ class TCompBTdistance : public TCompBase {
 	//Stats
 	float speed;
 	float turn_speed;
-	float life;
 
 	bool kill = false;
+
+	bool attacked = false;
+	float life = 100;
 
 public:
 
@@ -94,7 +96,7 @@ public:
 		if (ImGui::SmallButton("Impact")) {
 			bt.setImpact(true);
 		}
-
+		ImGui::Text("Life: %f", life);
 		ImGui::Text("Anim Duration: %f", animDuration);
 		ImGui::Text("Anim Time: %f", animTime);
 	}
@@ -105,6 +107,12 @@ public:
 
 	void update(float delta_time) {
 		PROFILE_FUNCTION("update");
+
+		if (attacked) {
+			life = life - 50;
+			bt.setLife(life);
+			attacked = false;
+		}
 
 		if (kill) {
 			CHandle(this).getOwner().destroy();
@@ -153,6 +161,7 @@ public:
 		DECL_MSG(TCompBTdistance, TMsgAttack, attack);
 		DECL_MSG(TCompBTdistance, TMsgAnimation, playAnimation);
 		DECL_MSG(TCompBTdistance, TMsgAnimationMovement, playAnimationMovement);
+		DECL_MSG(TCompBTdistance, TMsgattacked, attackme);
 	}
 
 	void whoIsAttacker(const TMsgAttacker& msg) {
@@ -231,6 +240,14 @@ public:
 
 		playingAnim = true;
 		bt.setPLayingAnim(true);
+
+	}
+
+	void attackme(const TMsgattacked& msg) {
+		float dist = VEC3::Distance(bt.getMyPosition(), msg.pos);
+		if (dist < 1) {
+			attacked = true;
+		}
 
 	}
 
